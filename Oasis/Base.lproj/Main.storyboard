@@ -102,6 +102,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cFK-9l-jKr">
+                                <rect key="frame" x="16" y="60" width="382" height="723"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="240" verticalHuggingPriority="240" alignment="top" spacing="-225" translatesAutoresizingMaskIntoConstraints="NO" id="7gt-8x-q0l">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="632"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="233" verticalHuggingPriority="232" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="heart-plant-pot" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-AG-PQJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="632"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-frame-3" translatesAutoresizingMaskIntoConstraints="NO" id="xF1-Rq-uVP">
+                                                <rect key="frame" x="157" y="0.0" width="225" height="512"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="xF1-Rq-uVP" secondAttribute="bottom" constant="120" id="UOg-fT-vLs"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gnl-AG-PQJ" secondAttribute="bottom" id="cxC-vy-woU"/>
+                                            <constraint firstItem="Gnl-AG-PQJ" firstAttribute="top" secondItem="7gt-8x-q0l" secondAttribute="top" id="jgG-8X-Z2c"/>
+                                            <constraint firstItem="Gnl-AG-PQJ" firstAttribute="centerX" secondItem="7gt-8x-q0l" secondAttribute="centerX" id="jkz-Mo-bw8"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-Kx-tsQ">
+                                        <rect key="frame" x="148.5" y="648" width="85" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="OmU-fY-ihw"/>
+                                            <constraint firstAttribute="height" constant="75" id="wIH-uP-twE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" image="water-button"/>
+                                        <connections>
+                                            <action selector="waterButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="Zm3-6W-II1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7gt-8x-q0l" secondAttribute="trailing" id="19F-xO-jKV"/>
+                                    <constraint firstItem="7gt-8x-q0l" firstAttribute="leading" secondItem="cFK-9l-jKr" secondAttribute="leading" id="ud2-7z-8uX"/>
+                                </constraints>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qB1-2N-MZ7">
                                 <rect key="frame" x="0.0" y="644" width="414" height="169"/>
                                 <subviews>
@@ -142,49 +181,17 @@
                                     <constraint firstItem="B97-cA-sAB" firstAttribute="top" secondItem="qB1-2N-MZ7" secondAttribute="top" id="xt9-in-HzN"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-Kx-tsQ">
-                                <rect key="frame" x="164.5" y="693" width="85" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="OmU-fY-ihw"/>
-                                    <constraint firstAttribute="height" constant="75" id="wIH-uP-twE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="water-button"/>
-                                <connections>
-                                    <action selector="waterButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="Zm3-6W-II1"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="-225" translatesAutoresizingMaskIntoConstraints="NO" id="7gt-8x-q0l">
-                                <rect key="frame" x="16" y="60" width="382" height="617"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="233" verticalHuggingPriority="232" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="heart-plant-pot" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-AG-PQJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="617"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-frame-3" translatesAutoresizingMaskIntoConstraints="NO" id="xF1-Rq-uVP">
-                                        <rect key="frame" x="157" y="0.0" width="225" height="497"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="xF1-Rq-uVP" secondAttribute="bottom" constant="120" id="UOg-fT-vLs"/>
-                                    <constraint firstAttribute="bottom" secondItem="Gnl-AG-PQJ" secondAttribute="bottom" id="cxC-vy-woU"/>
-                                    <constraint firstItem="Gnl-AG-PQJ" firstAttribute="top" secondItem="7gt-8x-q0l" secondAttribute="top" id="jgG-8X-Z2c"/>
-                                    <constraint firstItem="Gnl-AG-PQJ" firstAttribute="centerX" secondItem="7gt-8x-q0l" secondAttribute="centerX" id="jkz-Mo-bw8"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iaw-Bb-b0t"/>
                         <color key="backgroundColor" red="0.65018060860124893" green="0.90743003313149695" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZHL-Kx-tsQ" firstAttribute="top" secondItem="7gt-8x-q0l" secondAttribute="bottom" constant="16" id="4TJ-ob-18R"/>
-                            <constraint firstItem="ZHL-Kx-tsQ" firstAttribute="centerX" secondItem="d2V-Fc-FDn" secondAttribute="centerX" id="8L2-4t-dQr"/>
+                            <constraint firstItem="cFK-9l-jKr" firstAttribute="top" secondItem="Iaw-Bb-b0t" secondAttribute="top" constant="16" id="3tN-QN-rZf"/>
                             <constraint firstItem="Iaw-Bb-b0t" firstAttribute="trailing" secondItem="qB1-2N-MZ7" secondAttribute="trailing" id="9OI-Pv-J9c"/>
-                            <constraint firstItem="Iaw-Bb-b0t" firstAttribute="trailing" secondItem="7gt-8x-q0l" secondAttribute="trailing" constant="16" id="CCx-DA-1Ne"/>
-                            <constraint firstItem="Iaw-Bb-b0t" firstAttribute="bottom" secondItem="ZHL-Kx-tsQ" secondAttribute="bottom" constant="45" id="GBg-3t-0dQ"/>
+                            <constraint firstItem="cFK-9l-jKr" firstAttribute="leading" secondItem="d2V-Fc-FDn" secondAttribute="leading" constant="16" id="Jcy-wk-d4i"/>
                             <constraint firstItem="qB1-2N-MZ7" firstAttribute="bottom" secondItem="Iaw-Bb-b0t" secondAttribute="bottom" id="LKu-lV-Reu"/>
-                            <constraint firstItem="7gt-8x-q0l" firstAttribute="top" secondItem="Iaw-Bb-b0t" secondAttribute="top" constant="16" id="PAz-F7-ReA"/>
                             <constraint firstItem="qB1-2N-MZ7" firstAttribute="leading" secondItem="Iaw-Bb-b0t" secondAttribute="leading" id="TMm-WI-GMW"/>
-                            <constraint firstItem="7gt-8x-q0l" firstAttribute="leading" secondItem="Iaw-Bb-b0t" secondAttribute="leading" constant="16" id="Us6-jB-uby"/>
+                            <constraint firstItem="Iaw-Bb-b0t" firstAttribute="bottom" secondItem="cFK-9l-jKr" secondAttribute="bottom" constant="30" id="c7k-RA-cIV"/>
+                            <constraint firstItem="Iaw-Bb-b0t" firstAttribute="trailing" secondItem="cFK-9l-jKr" secondAttribute="trailing" constant="16" id="f0D-GG-wLT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="leaf" catalog="system" id="oJ1-8P-H6o"/>
