@@ -10,6 +10,7 @@ import CoreData
 
 class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
+    // userdefaults
     
     @IBOutlet var waterImage: UIImageView!
     @IBOutlet var popupView: UIView!
