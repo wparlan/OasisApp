@@ -165,6 +165,8 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
      - parameter sender: The UITapGestureRecognizer that registers the user's tap.
      */
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        plant!.plantName = plantNameTextField.text
+        savePlant()
         plantNameTextField.resignFirstResponder()
     }
     

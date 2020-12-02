@@ -12,6 +12,8 @@
 		1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */; };
 		16538690257800F200964188 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653868F257800F200964188 /* NotificationHandler.swift */; };
 		165386962578050200964188 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165386952578050200964188 /* TabBarViewController.swift */; };
+		1653869F257808DE00964188 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653869E257808DE00964188 /* MusicPlayer.swift */; };
+		165386A325780B8E00964188 /* blippy-loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 165386A225780B8E00964188 /* blippy-loop.mp3 */; };
 		1677372B25749AED00D70F6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677372A25749AED00D70F6D /* AppDelegate.swift */; };
 		1677372D25749AED00D70F6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677372C25749AED00D70F6D /* SceneDelegate.swift */; };
 		1677373225749AED00D70F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677373025749AED00D70F6D /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		1653868F257800F200964188 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		165386952578050200964188 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		1653869E257808DE00964188 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		165386A225780B8E00964188 /* blippy-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "blippy-loop.mp3"; sourceTree = "<group>"; };
 		1677372725749AED00D70F6D /* Oasis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oasis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1677372A25749AED00D70F6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1677372C25749AED00D70F6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		165386A125780B3100964188 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				165386A225780B8E00964188 /* blippy-loop.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		1677371E25749AED00D70F6D = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +80,7 @@
 		1677372925749AED00D70F6D /* Oasis */ = {
 			isa = PBXGroup;
 			children = (
+				165386A125780B3100964188 /* Sounds */,
 				1677372A25749AED00D70F6D /* AppDelegate.swift */,
 				1677372C25749AED00D70F6D /* SceneDelegate.swift */,
 				1677373025749AED00D70F6D /* Main.storyboard */,
@@ -81,6 +94,7 @@
 				1653866D2577A80500964188 /* Plant+CoreDataClass.swift */,
 				1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */,
 				1653868F257800F200964188 /* NotificationHandler.swift */,
+				1653869E257808DE00964188 /* MusicPlayer.swift */,
 			);
 			path = Oasis;
 			sourceTree = "<group>";
@@ -142,6 +156,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				165386A325780B8E00964188 /* blippy-loop.mp3 in Resources */,
 				1677373A25749AF000D70F6D /* LaunchScreen.storyboard in Resources */,
 				1677373725749AF000D70F6D /* Assets.xcassets in Resources */,
 				1677373225749AED00D70F6D /* Main.storyboard in Resources */,
@@ -163,6 +178,7 @@
 				165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */,
 				1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */,
 				1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */,
+				1653869F257808DE00964188 /* MusicPlayer.swift in Sources */,
 				1677372D25749AED00D70F6D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

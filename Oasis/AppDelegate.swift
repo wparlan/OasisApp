@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.setValue(true, forKey: "hasLaunched")
         }
         
+        
         // set daily notifications for morning, noon, evening, and night
         let notification = NotificationHandler()
         notification.requestPermission()

@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TabBarViewController: UITabBarController {
 
+    let musicPlayer = MusicPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         selectedIndex = 2
+        musicPlayer.startBackgroundMusic()
     }
     
 

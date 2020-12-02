@@ -151,6 +151,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
     }
     
     
+    
     // MARK: - Helper Functions
     func disableAll(){
         // switches
