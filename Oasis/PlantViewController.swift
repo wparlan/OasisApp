@@ -12,6 +12,8 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     // userdefaults
     
+    var plant: Plant? = nil
+    
     @IBOutlet var waterImage: UIImageView!
     @IBOutlet var popupView: UIView!
     @IBOutlet var pickerView: UIPickerView!
@@ -19,11 +21,6 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet var plantImageView: UIImageView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var plant: Plant? = nil {
-        didSet {
-            savePlant()
-        }
-    }
     
     
     let options = ["Cup (8 oz)", "Small water bottle (16 oz)", "Medium water bottle (22 oz)", "Large water bottle (32 oz)"]
@@ -37,6 +34,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         popupView.isHidden = true
         pickerView.delegate = self
         pickerView.dataSource = self
+        initPlant()
         loadPlant()
     }
     
@@ -53,15 +51,16 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         if let plantName = plantNameTextField.text {
             plant!.plantName = plantName
         }
+        savePlant()
     }
     
     func loadPlant() {
         let request: NSFetchRequest<Plant> = Plant.fetchRequest()
-        request.predicate = NSPredicate(format: "isCurrent MATCHES true")
+        request.predicate = NSPredicate(format: "isCurrent == true")
         do {
             plant = try context.fetch(request)[0]
             plantNameTextField.text = plant!.plantName
-            plantImageView.image = UIImage(named: "\(plant!.imageName)-phase-\(plant!.phase)")
+            plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
         }
         catch {
             print("Error loading plant \(error)")
@@ -79,26 +78,6 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBAction func waterButtonPressed(_ sender: UIButton) {
         popupView.isHidden = false
-        switch plant!.phase {
-        case 0:
-            if plant!.waterLevel >= plant!.phase1WaterNeeded {
-                plant!.phase += 1
-                loadPlant()
-            }
-        case 1:
-            if plant!.waterLevel >= plant!.phase2WaterNeeded {
-                plant!.phase += 1
-                loadPlant()
-            }
-        case 2:
-            if plant!.waterLevel >= plant!.totalWaterNeeded{
-                plant!.phase += 1
-                loadPlant()
-                alertFullyGrown()
-            }
-        default:
-            break
-        }
     }
     
     func animateWater() {
@@ -141,6 +120,27 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         plant!.waterLevel += Int32(choiceIndex)
         popupView.isHidden = true
         animateWater()
+        switch plant!.phase {
+        case 0:
+            if plant!.waterLevel >= plant!.phase1WaterNeeded {
+                plant!.phase += 1
+                loadPlant()
+            }
+        case 1:
+            if plant!.waterLevel >= plant!.phase2WaterNeeded {
+                plant!.phase += 1
+                loadPlant()
+            }
+        case 2:
+            if plant!.waterLevel >= plant!.totalWaterNeeded{
+                plant!.phase += 1
+                loadPlant()
+                alertFullyGrown()
+            }
+        default:
+            break
+        }
+        savePlant()
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -149,6 +149,8 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     // MARK: - Text Field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        plant!.plantName = textField.text
+        savePlant()
         textField.resignFirstResponder()
         return true
     }

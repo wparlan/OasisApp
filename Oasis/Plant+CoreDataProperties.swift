@@ -19,7 +19,7 @@ extension Plant {
     @NSManaged public var dateCompleted: Date?
     @NSManaged public var dateLastWatered: Date?
     @NSManaged public var datePlanted: Date?
-    @NSManaged public var imageName: String
+    @NSManaged public var imageName: String?
     @NSManaged public var phase: Int32
     @NSManaged public var phase1WaterNeeded: Int32
     @NSManaged public var phase2WaterNeeded: Int32
