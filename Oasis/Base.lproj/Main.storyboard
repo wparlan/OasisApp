@@ -103,31 +103,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cFK-9l-jKr">
-                                <rect key="frame" x="16" y="60" width="382" height="723"/>
+                                <rect key="frame" x="16" y="74" width="382" height="709"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="240" verticalHuggingPriority="240" alignment="top" spacing="-225" translatesAutoresizingMaskIntoConstraints="NO" id="7gt-8x-q0l">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="632"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="233" verticalHuggingPriority="232" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="heart-plant-pot" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-AG-PQJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="632"/>
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-frame-3" translatesAutoresizingMaskIntoConstraints="NO" id="xF1-Rq-uVP">
-                                                <rect key="frame" x="157" y="0.0" width="225" height="512"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="xF1-Rq-uVP" secondAttribute="bottom" constant="120" id="UOg-fT-vLs"/>
-                                            <constraint firstAttribute="bottom" secondItem="Gnl-AG-PQJ" secondAttribute="bottom" id="cxC-vy-woU"/>
-                                            <constraint firstItem="Gnl-AG-PQJ" firstAttribute="top" secondItem="7gt-8x-q0l" secondAttribute="top" id="jgG-8X-Z2c"/>
-                                            <constraint firstItem="Gnl-AG-PQJ" firstAttribute="centerX" secondItem="7gt-8x-q0l" secondAttribute="centerX" id="jkz-Mo-bw8"/>
-                                        </constraints>
-                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" ✎" textAlignment="center" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="89b-21-cWK">
+                                        <rect key="frame" x="40" y="0.0" width="302" height="26.5"/>
+                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="233" verticalHuggingPriority="232" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="heart-plant-phase-0" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-AG-PQJ">
+                                        <rect key="frame" x="16" y="42.5" width="350" height="590.5"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-Kx-tsQ">
-                                        <rect key="frame" x="148.5" y="648" width="85" height="75"/>
+                                        <rect key="frame" x="156" y="649" width="70" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="85" id="OmU-fY-ihw"/>
-                                            <constraint firstAttribute="height" constant="75" id="wIH-uP-twE"/>
+                                            <constraint firstAttribute="width" constant="70" id="OmU-fY-ihw"/>
+                                            <constraint firstAttribute="height" constant="60" id="wIH-uP-twE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="water-button"/>
@@ -137,8 +128,10 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="7gt-8x-q0l" secondAttribute="trailing" id="19F-xO-jKV"/>
-                                    <constraint firstItem="7gt-8x-q0l" firstAttribute="leading" secondItem="cFK-9l-jKr" secondAttribute="leading" id="ud2-7z-8uX"/>
+                                    <constraint firstAttribute="trailing" secondItem="89b-21-cWK" secondAttribute="trailing" constant="40" id="Pl4-9F-B4Z"/>
+                                    <constraint firstItem="Gnl-AG-PQJ" firstAttribute="leading" secondItem="cFK-9l-jKr" secondAttribute="leading" constant="16" id="dJf-aF-yZs"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gnl-AG-PQJ" secondAttribute="trailing" constant="16" id="fXN-Rh-K9J"/>
+                                    <constraint firstItem="89b-21-cWK" firstAttribute="leading" secondItem="cFK-9l-jKr" secondAttribute="leading" constant="40" id="ru7-mp-7Bq"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qB1-2N-MZ7">
@@ -147,18 +140,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B97-cA-sAB">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="169"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-g1-zaq">
-                                                <rect key="frame" x="39.5" y="0.0" width="335" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-g1-zaq">
+                                                <rect key="frame" x="35" y="0.0" width="344" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F0-wl-LGh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <state key="normal" title="Cancel"/>
                                                         <connections>
                                                             <action selector="cancelButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="4uU-n4-ap7"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5j-va-fjT">
-                                                        <rect key="frame" x="298" y="0.0" width="37" height="30"/>
+                                                        <rect key="frame" x="272" y="0.0" width="72" height="30"/>
                                                         <state key="normal" title="Done"/>
                                                         <connections>
                                                             <action selector="doneButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="ahk-RQ-CxU"/>
@@ -167,9 +160,15 @@
                                                 </subviews>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uE-12-sZU">
-                                                <rect key="frame" x="47" y="30" width="320" height="139"/>
+                                                <rect key="frame" x="20" y="30" width="374" height="139"/>
                                             </pickerView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="1uE-12-sZU" firstAttribute="leading" secondItem="B97-cA-sAB" secondAttribute="leading" constant="20" id="25z-cM-UKW"/>
+                                            <constraint firstAttribute="trailing" secondItem="tu0-g1-zaq" secondAttribute="trailing" constant="35" id="FUN-qi-bgr"/>
+                                            <constraint firstItem="tu0-g1-zaq" firstAttribute="leading" secondItem="B97-cA-sAB" secondAttribute="leading" constant="35" id="FVt-hz-Zxr"/>
+                                            <constraint firstAttribute="trailing" secondItem="1uE-12-sZU" secondAttribute="trailing" constant="20" id="Sf0-Jy-jOk"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.7418981456" green="0.92837857369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -181,27 +180,46 @@
                                     <constraint firstItem="B97-cA-sAB" firstAttribute="top" secondItem="qB1-2N-MZ7" secondAttribute="top" id="xt9-in-HzN"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xF1-Rq-uVP">
+                                <rect key="frame" x="173" y="213" width="208" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xF1-Rq-uVP" secondAttribute="height" multiplier="220:233" id="0HR-C1-SXN"/>
+                                    <constraint firstAttribute="height" constant="220" id="riV-bL-zZt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iaw-Bb-b0t"/>
                         <color key="backgroundColor" red="0.65018060860124893" green="0.90743003313149695" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cFK-9l-jKr" firstAttribute="top" secondItem="Iaw-Bb-b0t" secondAttribute="top" constant="16" id="3tN-QN-rZf"/>
+                            <constraint firstItem="cFK-9l-jKr" firstAttribute="top" secondItem="Iaw-Bb-b0t" secondAttribute="top" constant="30" id="3tN-QN-rZf"/>
                             <constraint firstItem="Iaw-Bb-b0t" firstAttribute="trailing" secondItem="qB1-2N-MZ7" secondAttribute="trailing" id="9OI-Pv-J9c"/>
                             <constraint firstItem="cFK-9l-jKr" firstAttribute="leading" secondItem="d2V-Fc-FDn" secondAttribute="leading" constant="16" id="Jcy-wk-d4i"/>
                             <constraint firstItem="qB1-2N-MZ7" firstAttribute="bottom" secondItem="Iaw-Bb-b0t" secondAttribute="bottom" id="LKu-lV-Reu"/>
                             <constraint firstItem="qB1-2N-MZ7" firstAttribute="leading" secondItem="Iaw-Bb-b0t" secondAttribute="leading" id="TMm-WI-GMW"/>
                             <constraint firstItem="Iaw-Bb-b0t" firstAttribute="bottom" secondItem="cFK-9l-jKr" secondAttribute="bottom" constant="30" id="c7k-RA-cIV"/>
                             <constraint firstItem="Iaw-Bb-b0t" firstAttribute="trailing" secondItem="cFK-9l-jKr" secondAttribute="trailing" constant="16" id="f0D-GG-wLT"/>
+                            <constraint firstItem="xF1-Rq-uVP" firstAttribute="centerX" secondItem="d2V-Fc-FDn" secondAttribute="centerX" constant="70" id="hyA-Tt-W1u"/>
+                            <constraint firstItem="xF1-Rq-uVP" firstAttribute="centerY" secondItem="d2V-Fc-FDn" secondAttribute="centerY" constant="-125" id="sZq-ye-838"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="S1G-HP-f50" appends="YES" id="h0O-cK-N7S"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="leaf" catalog="system" id="oJ1-8P-H6o"/>
                     <connections>
                         <outlet property="pickerView" destination="1uE-12-sZU" id="qhx-ZQ-njP"/>
+                        <outlet property="plantImageView" destination="Gnl-AG-PQJ" id="UXu-eT-adv"/>
+                        <outlet property="plantNameTextField" destination="89b-21-cWK" id="9uM-eg-L4V"/>
                         <outlet property="popupView" destination="qB1-2N-MZ7" id="t1c-oA-VjT"/>
                         <outlet property="waterImage" destination="xF1-Rq-uVP" id="ar8-E4-SVL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENX-KD-9Ic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="S1G-HP-f50">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="icU-Hl-9Yn" id="oRc-fd-Ghl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-613.04347826086962" y="185.49107142857142"/>
         </scene>
@@ -210,11 +228,10 @@
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="heart-plant-pot" width="200" height="200"/>
+        <image name="heart-plant-phase-0" width="200" height="200"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="leaf" catalog="system" width="128" height="109"/>
         <image name="water-button" width="100" height="82"/>
-        <image name="water-frame-3" width="136" height="144"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
