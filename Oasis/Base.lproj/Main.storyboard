@@ -97,11 +97,51 @@
         <!--Plant-->
         <scene sceneID="cju-Gd-9Xd">
             <objects>
-                <viewController title="Plant" id="icU-Hl-9Yn" sceneMemberID="viewController">
+                <viewController title="Plant" id="icU-Hl-9Yn" customClass="PlantViewController" customModule="Oasis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d2V-Fc-FDn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qB1-2N-MZ7">
+                                <rect key="frame" x="0.0" y="644" width="414" height="169"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B97-cA-sAB">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="169"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-g1-zaq">
+                                                <rect key="frame" x="39.5" y="0.0" width="335" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F0-wl-LGh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                        <state key="normal" title="Cancel"/>
+                                                        <connections>
+                                                            <action selector="cancelButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="4uU-n4-ap7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5j-va-fjT">
+                                                        <rect key="frame" x="298" y="0.0" width="37" height="30"/>
+                                                        <state key="normal" title="Done"/>
+                                                        <connections>
+                                                            <action selector="doneButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="ahk-RQ-CxU"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uE-12-sZU">
+                                                <rect key="frame" x="47" y="30" width="320" height="139"/>
+                                            </pickerView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.7418981456" green="0.92837857369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="169" id="6BS-bc-pY9"/>
+                                    <constraint firstAttribute="bottom" secondItem="B97-cA-sAB" secondAttribute="bottom" id="Zar-aC-Dux"/>
+                                    <constraint firstItem="B97-cA-sAB" firstAttribute="leading" secondItem="qB1-2N-MZ7" secondAttribute="leading" id="jru-b3-oF8"/>
+                                    <constraint firstAttribute="trailing" secondItem="B97-cA-sAB" secondAttribute="trailing" id="mN9-yr-gRu"/>
+                                    <constraint firstItem="B97-cA-sAB" firstAttribute="top" secondItem="qB1-2N-MZ7" secondAttribute="top" id="xt9-in-HzN"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-Kx-tsQ">
                                 <rect key="frame" x="164.5" y="693" width="85" height="75"/>
                                 <constraints>
@@ -110,6 +150,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" image="water-button"/>
+                                <connections>
+                                    <action selector="waterButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="Zm3-6W-II1"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="-225" translatesAutoresizingMaskIntoConstraints="NO" id="7gt-8x-q0l">
                                 <rect key="frame" x="16" y="60" width="382" height="617"/>
@@ -118,7 +161,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="617"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xF1-Rq-uVP">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-frame-3" translatesAutoresizingMaskIntoConstraints="NO" id="xF1-Rq-uVP">
                                         <rect key="frame" x="157" y="0.0" width="225" height="497"/>
                                     </imageView>
                                 </subviews>
@@ -135,13 +178,21 @@
                         <constraints>
                             <constraint firstItem="ZHL-Kx-tsQ" firstAttribute="top" secondItem="7gt-8x-q0l" secondAttribute="bottom" constant="16" id="4TJ-ob-18R"/>
                             <constraint firstItem="ZHL-Kx-tsQ" firstAttribute="centerX" secondItem="d2V-Fc-FDn" secondAttribute="centerX" id="8L2-4t-dQr"/>
+                            <constraint firstItem="Iaw-Bb-b0t" firstAttribute="trailing" secondItem="qB1-2N-MZ7" secondAttribute="trailing" id="9OI-Pv-J9c"/>
                             <constraint firstItem="Iaw-Bb-b0t" firstAttribute="trailing" secondItem="7gt-8x-q0l" secondAttribute="trailing" constant="16" id="CCx-DA-1Ne"/>
                             <constraint firstItem="Iaw-Bb-b0t" firstAttribute="bottom" secondItem="ZHL-Kx-tsQ" secondAttribute="bottom" constant="45" id="GBg-3t-0dQ"/>
+                            <constraint firstItem="qB1-2N-MZ7" firstAttribute="bottom" secondItem="Iaw-Bb-b0t" secondAttribute="bottom" id="LKu-lV-Reu"/>
                             <constraint firstItem="7gt-8x-q0l" firstAttribute="top" secondItem="Iaw-Bb-b0t" secondAttribute="top" constant="16" id="PAz-F7-ReA"/>
+                            <constraint firstItem="qB1-2N-MZ7" firstAttribute="leading" secondItem="Iaw-Bb-b0t" secondAttribute="leading" id="TMm-WI-GMW"/>
                             <constraint firstItem="7gt-8x-q0l" firstAttribute="leading" secondItem="Iaw-Bb-b0t" secondAttribute="leading" constant="16" id="Us6-jB-uby"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="leaf" catalog="system" id="oJ1-8P-H6o"/>
+                    <connections>
+                        <outlet property="pickerView" destination="1uE-12-sZU" id="qhx-ZQ-njP"/>
+                        <outlet property="popupView" destination="qB1-2N-MZ7" id="t1c-oA-VjT"/>
+                        <outlet property="waterImage" destination="xF1-Rq-uVP" id="ar8-E4-SVL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENX-KD-9Ic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,6 +207,7 @@
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="leaf" catalog="system" width="128" height="109"/>
         <image name="water-button" width="100" height="82"/>
+        <image name="water-frame-3" width="136" height="144"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
