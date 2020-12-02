@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653866D2577A80500964188 /* Plant+CoreDataClass.swift */; };
 		165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */; };
+		1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */; };
+		16538690257800F200964188 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653868F257800F200964188 /* NotificationHandler.swift */; };
+		165386962578050200964188 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165386952578050200964188 /* TabBarViewController.swift */; };
 		1677372B25749AED00D70F6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677372A25749AED00D70F6D /* AppDelegate.swift */; };
 		1677372D25749AED00D70F6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677372C25749AED00D70F6D /* SceneDelegate.swift */; };
 		1677373225749AED00D70F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677373025749AED00D70F6D /* Main.storyboard */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		1653866D2577A80500964188 /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		1653868F257800F200964188 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		165386952578050200964188 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1677372725749AED00D70F6D /* Oasis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oasis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1677372A25749AED00D70F6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1677372C25749AED00D70F6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,13 +71,16 @@
 				1677372A25749AED00D70F6D /* AppDelegate.swift */,
 				1677372C25749AED00D70F6D /* SceneDelegate.swift */,
 				1677373025749AED00D70F6D /* Main.storyboard */,
+				165386952578050200964188 /* TabBarViewController.swift */,
 				1677375F25772A1F00D70F6D /* PlantViewController.swift */,
+				1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */,
 				1677373625749AF000D70F6D /* Assets.xcassets */,
 				1677373825749AF000D70F6D /* LaunchScreen.storyboard */,
 				1677373B25749AF000D70F6D /* Info.plist */,
 				1677373325749AED00D70F6D /* Oasis.xcdatamodeld */,
 				1653866D2577A80500964188 /* Plant+CoreDataClass.swift */,
 				1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */,
+				1653868F257800F200964188 /* NotificationHandler.swift */,
 			);
 			path = Oasis;
 			sourceTree = "<group>";
@@ -147,9 +156,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1677373525749AED00D70F6D /* Oasis.xcdatamodeld in Sources */,
+				16538690257800F200964188 /* NotificationHandler.swift in Sources */,
 				1677372B25749AED00D70F6D /* AppDelegate.swift in Sources */,
 				1677376025772A1F00D70F6D /* PlantViewController.swift in Sources */,
+				165386962578050200964188 /* TabBarViewController.swift in Sources */,
 				165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */,
+				1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */,
 				1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */,
 				1677372D25749AED00D70F6D /* SceneDelegate.swift in Sources */,
 			);

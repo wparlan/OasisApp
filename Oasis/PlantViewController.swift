@@ -89,7 +89,32 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         waterImage.image = animation
         let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: {(timer) in
             self.waterImage.image = nil
+            self.checkGrowth()
         })
+    }
+    
+    func checkGrowth() {
+        switch plant!.phase {
+        case 0:
+            if plant!.waterLevel >= plant!.phase1WaterNeeded {
+                plant!.phase += 1
+                loadPlant()
+            }
+        case 1:
+            if plant!.waterLevel >= plant!.phase2WaterNeeded {
+                plant!.phase += 1
+                loadPlant()
+            }
+        case 2:
+            if plant!.waterLevel >= plant!.totalWaterNeeded{
+                plant!.phase += 1
+                loadPlant()
+                alertFullyGrown()
+            }
+        default:
+            break
+        }
+        savePlant()
     }
     
     func alertFullyGrown() {
@@ -120,26 +145,6 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         plant!.waterLevel += Int32(choiceIndex)
         popupView.isHidden = true
         animateWater()
-        switch plant!.phase {
-        case 0:
-            if plant!.waterLevel >= plant!.phase1WaterNeeded {
-                plant!.phase += 1
-                loadPlant()
-            }
-        case 1:
-            if plant!.waterLevel >= plant!.phase2WaterNeeded {
-                plant!.phase += 1
-                loadPlant()
-            }
-        case 2:
-            if plant!.waterLevel >= plant!.totalWaterNeeded{
-                plant!.phase += 1
-                loadPlant()
-                alertFullyGrown()
-            }
-        default:
-            break
-        }
         savePlant()
     }
     

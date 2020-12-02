@@ -11,12 +11,31 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var hasLaunched: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // check if first time lanching
+        print("app did launch")
+        hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunched")
+        if !hasLaunched {
+            hasLaunched = true
+            UserDefaults.standard.setValue(true, forKey: "hasLaunched")
+        }
+        
+        // set daily notifications for morning, noon, evening, and night
+        let notification = NotificationHandler()
+        notification.requestPermission()
+        notification.setReminder(title: "Good Morning!" , body: "Skip the coffee--instead, start the day off right with a tall glass of water!", hour: 7, minute: 0)
+        notification.setReminder(title: "Good Afternoon!", body: "Don't forget to stay hydrated!", hour: 12, minute: 30)
+        notification.setReminder(title: "Good Evening!", body: "The day is almost over. Keep up the good work!", hour: 18, minute: 00)
+        notification.setReminder(title: "Good night!", body: "Don't forget to go to sleep with a glass of water by your bed in case you get thirsty in the night", hour: 21, minute: 0)
+        notification.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water", timeInterval: 120)
+
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
