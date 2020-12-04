@@ -10,7 +10,7 @@ import CoreData
 
 class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    // userdefaults
+    // TODO: water loss
     
     var plant: Plant? = nil
     
@@ -38,20 +38,27 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         loadPlant()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        loadPlant()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        savePlant()
+    }
+    
     
     func initPlant() {
         plant = Plant(context: context)
         plant!.phase = 0
         plant!.imageName = "heart-plant"
-        plant!.phase1WaterNeeded = 1
-        plant!.phase2WaterNeeded = 3
-        plant!.totalWaterNeeded = 4
+        plant!.phase1WaterNeeded = 8
+        plant!.phase2WaterNeeded = 30
+        plant!.totalWaterNeeded = 50
         plant!.datePlanted = Date()
         plant!.isCurrent = true
         if let plantName = plantNameTextField.text {
             plant!.plantName = plantName
         }
-        savePlant()
     }
     
     func loadPlant() {
@@ -60,7 +67,16 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         do {
             plant = try context.fetch(request)[0]
             plantNameTextField.text = plant!.plantName
-            plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
+            if let unwrappedDateLastWatered = plant!.dateLastWatered {
+                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && (plant!.phase == 1 || plant!.phase == 2) {
+                    plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead")
+                    plant!.waterLevel = plant!.waterLevel - 16
+                }
+                //172800
+            }
+            else {
+                plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
+            }
         }
         catch {
             print("Error loading plant \(error)")
@@ -78,6 +94,8 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBAction func waterButtonPressed(_ sender: UIButton) {
         popupView.isHidden = false
+        plant!.dateLastWatered = Date()
+        savePlant()
     }
     
     func animateWater() {
@@ -94,27 +112,29 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func checkGrowth() {
+        if plantImageView.image == UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead") {
+            plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
+        }
         switch plant!.phase {
         case 0:
             if plant!.waterLevel >= plant!.phase1WaterNeeded {
                 plant!.phase += 1
-                loadPlant()
+                plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
             }
         case 1:
             if plant!.waterLevel >= plant!.phase2WaterNeeded {
                 plant!.phase += 1
-                loadPlant()
+                plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
             }
         case 2:
             if plant!.waterLevel >= plant!.totalWaterNeeded{
                 plant!.phase += 1
-                loadPlant()
+                plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
                 alertFullyGrown()
             }
         default:
             break
         }
-        savePlant()
     }
     
     func alertFullyGrown() {
@@ -142,10 +162,9 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         let choiceIndex = pickerView.selectedRow(inComponent: 0) + 1
-        plant!.waterLevel += Int32(choiceIndex)
+        plant!.waterLevel += Int32(choiceIndex) * 8
         popupView.isHidden = true
         animateWater()
-        savePlant()
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -155,7 +174,6 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     // MARK: - Text Field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         plant!.plantName = textField.text
-        savePlant()
         textField.resignFirstResponder()
         return true
     }
@@ -166,7 +184,6 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
      */
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         plant!.plantName = plantNameTextField.text
-        savePlant()
         plantNameTextField.resignFirstResponder()
     }
     
