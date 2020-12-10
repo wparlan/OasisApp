@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1626B1882582058D00E60BAE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B1872582058D00E60BAE /* CalendarViewController.swift */; };
+		1626B18C2582097900E60BAE /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B18B2582097900E60BAE /* DateCell.swift */; };
 		1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653866D2577A80500964188 /* Plant+CoreDataClass.swift */; };
 		165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */; };
 		1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */; };
@@ -21,9 +23,12 @@
 		1677373725749AF000D70F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1677373625749AF000D70F6D /* Assets.xcassets */; };
 		1677373A25749AF000D70F6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677373825749AF000D70F6D /* LaunchScreen.storyboard */; };
 		1677376025772A1F00D70F6D /* PlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677375F25772A1F00D70F6D /* PlantViewController.swift */; };
+		446599A857ED77B456FFA25D /* Pods_Oasis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F10496EB901AA1047E6EEDF /* Pods_Oasis.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1626B1872582058D00E60BAE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		1626B18B2582097900E60BAE /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		1653866D2577A80500964188 /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +45,9 @@
 		1677373925749AF000D70F6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1677373B25749AF000D70F6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1677375F25772A1F00D70F6D /* PlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantViewController.swift; sourceTree = "<group>"; };
+		1E18466358ED26CC1787CA27 /* Pods-Oasis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oasis.release.xcconfig"; path = "Target Support Files/Pods-Oasis/Pods-Oasis.release.xcconfig"; sourceTree = "<group>"; };
+		9F10496EB901AA1047E6EEDF /* Pods_Oasis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oasis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0B294B906075C714EB8C1E6 /* Pods-Oasis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oasis.debug.xcconfig"; path = "Target Support Files/Pods-Oasis/Pods-Oasis.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,12 +55,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446599A857ED77B456FFA25D /* Pods_Oasis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020DDBABE85FA9D873CFED03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F10496EB901AA1047E6EEDF /* Pods_Oasis.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		165386A125780B3100964188 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +83,8 @@
 			children = (
 				1677372925749AED00D70F6D /* Oasis */,
 				1677372825749AED00D70F6D /* Products */,
+				A22165D0CD0C04AFFBC963DF /* Pods */,
+				020DDBABE85FA9D873CFED03 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +105,7 @@
 				1677373025749AED00D70F6D /* Main.storyboard */,
 				165386952578050200964188 /* TabBarViewController.swift */,
 				1677375F25772A1F00D70F6D /* PlantViewController.swift */,
+				1626B1872582058D00E60BAE /* CalendarViewController.swift */,
 				1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */,
 				1677373625749AF000D70F6D /* Assets.xcassets */,
 				1677373825749AF000D70F6D /* LaunchScreen.storyboard */,
@@ -95,8 +115,18 @@
 				1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */,
 				1653868F257800F200964188 /* NotificationHandler.swift */,
 				1653869E257808DE00964188 /* MusicPlayer.swift */,
+				1626B18B2582097900E60BAE /* DateCell.swift */,
 			);
 			path = Oasis;
+			sourceTree = "<group>";
+		};
+		A22165D0CD0C04AFFBC963DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0B294B906075C714EB8C1E6 /* Pods-Oasis.debug.xcconfig */,
+				1E18466358ED26CC1787CA27 /* Pods-Oasis.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,9 +136,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1677373E25749AF000D70F6D /* Build configuration list for PBXNativeTarget "Oasis" */;
 			buildPhases = (
+				25DDA353398FE7F95AB9DBE0 /* [CP] Check Pods Manifest.lock */,
 				1677372325749AED00D70F6D /* Sources */,
 				1677372425749AED00D70F6D /* Frameworks */,
 				1677372525749AED00D70F6D /* Resources */,
+				0F4B98873A338145F207DF95 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +197,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F4B98873A338145F207DF95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Oasis/Pods-Oasis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Oasis/Pods-Oasis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Oasis/Pods-Oasis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25DDA353398FE7F95AB9DBE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Oasis-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1677372325749AED00D70F6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -173,9 +247,11 @@
 				1677373525749AED00D70F6D /* Oasis.xcdatamodeld in Sources */,
 				16538690257800F200964188 /* NotificationHandler.swift in Sources */,
 				1677372B25749AED00D70F6D /* AppDelegate.swift in Sources */,
+				1626B1882582058D00E60BAE /* CalendarViewController.swift in Sources */,
 				1677376025772A1F00D70F6D /* PlantViewController.swift in Sources */,
 				165386962578050200964188 /* TabBarViewController.swift in Sources */,
 				165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */,
+				1626B18C2582097900E60BAE /* DateCell.swift in Sources */,
 				1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */,
 				1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */,
 				1653869F257808DE00964188 /* MusicPlayer.swift in Sources */,
@@ -323,6 +399,7 @@
 		};
 		1677373F25749AF000D70F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0B294B906075C714EB8C1E6 /* Pods-Oasis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -342,6 +419,7 @@
 		};
 		1677374025749AF000D70F6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E18466358ED26CC1787CA27 /* Pods-Oasis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
