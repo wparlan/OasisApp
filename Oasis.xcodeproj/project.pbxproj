@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1626B1882582058D00E60BAE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B1872582058D00E60BAE /* CalendarViewController.swift */; };
 		1626B18C2582097900E60BAE /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B18B2582097900E60BAE /* DateCell.swift */; };
+		1626B18F2582C39500E60BAE /* DateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B18E2582C39500E60BAE /* DateHeader.swift */; };
 		1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653866D2577A80500964188 /* Plant+CoreDataClass.swift */; };
 		165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */; };
 		1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		1626B1872582058D00E60BAE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1626B18B2582097900E60BAE /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		1626B18E2582C39500E60BAE /* DateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeader.swift; sourceTree = "<group>"; };
 		1653866D2577A80500964188 /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				1653868F257800F200964188 /* NotificationHandler.swift */,
 				1653869E257808DE00964188 /* MusicPlayer.swift */,
 				1626B18B2582097900E60BAE /* DateCell.swift */,
+				1626B18E2582C39500E60BAE /* DateHeader.swift */,
 			);
 			path = Oasis;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				1677372B25749AED00D70F6D /* AppDelegate.swift in Sources */,
 				1626B1882582058D00E60BAE /* CalendarViewController.swift in Sources */,
 				1677376025772A1F00D70F6D /* PlantViewController.swift in Sources */,
+				1626B18F2582C39500E60BAE /* DateHeader.swift in Sources */,
 				165386962578050200964188 /* TabBarViewController.swift in Sources */,
 				165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */,
 				1626B18C2582097900E60BAE /* DateCell.swift in Sources */,

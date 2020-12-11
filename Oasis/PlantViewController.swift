@@ -10,7 +10,6 @@ import CoreData
 
 class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    // TODO: water loss
     
     var plant: Plant? = nil
     
@@ -68,7 +67,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             plant = try context.fetch(request)[0]
             plantNameTextField.text = plant!.plantName
             if let unwrappedDateLastWatered = plant!.dateLastWatered {
-                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && (plant!.phase == 1 || plant!.phase == 2) {
+                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3  && plantImageView.image != UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead") {
                     plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead")
                     plant!.waterLevel = plant!.waterLevel - 16
                 }
