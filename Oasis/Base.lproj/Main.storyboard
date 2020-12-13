@@ -84,8 +84,8 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfO-rr-5G4">
-                                                            <rect key="frame" x="60" y="79.5" width="8" height="8"/>
-                                                            <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                            <rect key="frame" x="60" y="77.5" width="8" height="8"/>
+                                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="8" id="0ed-Ki-bzJ"/>
                                                                 <constraint firstAttribute="height" constant="8" id="GZw-94-30l"/>
@@ -109,7 +109,7 @@
                                                         <constraint firstItem="Kxy-ql-p6W" firstAttribute="centerY" secondItem="gXe-gI-ehV" secondAttribute="centerY" id="PVW-fY-Y6Y"/>
                                                         <constraint firstItem="cfO-rr-5G4" firstAttribute="centerX" secondItem="gXe-gI-ehV" secondAttribute="centerX" id="rUO-8Z-aMp"/>
                                                         <constraint firstItem="RI9-dw-Kux" firstAttribute="centerX" secondItem="gXe-gI-ehV" secondAttribute="centerX" id="rhX-74-Js0"/>
-                                                        <constraint firstItem="cfO-rr-5G4" firstAttribute="top" secondItem="RI9-dw-Kux" secondAttribute="bottom" constant="5" id="zsV-DQ-s6D"/>
+                                                        <constraint firstItem="cfO-rr-5G4" firstAttribute="top" secondItem="RI9-dw-Kux" secondAttribute="bottom" constant="3" id="zsV-DQ-s6D"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <connections>
@@ -864,8 +864,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

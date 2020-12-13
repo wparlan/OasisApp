@@ -90,10 +90,12 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             plant = try context.fetch(request)[0]
             plantNameTextField.text = plant!.plantName
             if let unwrappedDateLastWatered = plant!.dateLastWatered {
-                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3 && !isDead {
+                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3 {
                     isDead = true;
                     plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead")
-                    plant!.waterLevel = plant!.waterLevel - 16
+                    if ((plant!.phase == 1 && plant!.waterLevel > plant!.phase1WaterNeeded) || plant!.phase == 2 && plant!.waterLevel > plant!.phase2WaterNeeded) {
+                        plant!.waterLevel = plant!.waterLevel - 16
+                    }
                 }
                 //172800
                 else {

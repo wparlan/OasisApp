@@ -67,6 +67,10 @@ class CalendarViewController: UIViewController {
             plantLabel.text = "Plant: \(plantName)"
             totalWaterLabel.text = "Total: \(total) oz"
         }
+        else {
+            plantLabel.text = "Plant: "
+            totalWaterLabel.text = "Total: 0 oz"
+        }
         
     }
     
