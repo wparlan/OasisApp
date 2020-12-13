@@ -77,7 +77,7 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-ql-p6W">
                                                             <rect key="frame" x="39" y="39" width="50" height="50"/>
-                                                            <color key="backgroundColor" red="0.81728902969999995" green="0.93748868900000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.69127391059999999" green="0.90655982940000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="i5p-El-oHu"/>
                                                                 <constraint firstAttribute="width" constant="50" id="lGe-si-cZT"/>
@@ -182,7 +182,7 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.8064615772" green="0.94419014170000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.69127391059999999" green="0.90655982940000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="pme-2R-YNa" firstAttribute="leading" secondItem="PUw-Ro-9nh" secondAttribute="leading" id="UIx-3a-C1N"/>
                                                 <constraint firstAttribute="trailing" secondItem="pme-2R-YNa" secondAttribute="trailing" id="Z2E-tf-0QD"/>
@@ -225,7 +225,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.8064615772" green="0.94419014170000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.69127391059999999" green="0.90655982940000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BZQ-rQ-V6M" secondAttribute="trailing" constant="16" id="36u-e3-Ev4"/>
                                             <constraint firstItem="BZQ-rQ-V6M" firstAttribute="top" secondItem="9Cy-um-q7z" secondAttribute="top" constant="16" id="HKX-gQ-Wpb"/>
@@ -245,7 +245,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aDt-uG-1mK"/>
-                        <color key="backgroundColor" red="0.66575556989999995" green="0.90390533210000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.91243674100000005" green="0.96937901520000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fZL-qx-Ddu" firstAttribute="top" secondItem="aDt-uG-1mK" secondAttribute="top" constant="30" id="0Uo-fP-TH9"/>
                             <constraint firstItem="aDt-uG-1mK" firstAttribute="trailing" secondItem="fZL-qx-Ddu" secondAttribute="trailing" constant="16" id="0q5-B7-09C"/>
@@ -256,6 +256,8 @@
                     <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="dPd-lL-i0u"/>
                     <connections>
                         <outlet property="calendarView" destination="vBz-fd-Vqq" id="gU0-7h-5dO"/>
+                        <outlet property="plantLabel" destination="Yw8-wI-FuQ" id="3gE-92-jgP"/>
+                        <outlet property="totalWaterLabel" destination="FIM-fe-22H" id="BtZ-wd-LYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzd-av-I7Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

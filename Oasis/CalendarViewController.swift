@@ -11,7 +11,11 @@ import JTAppleCalendar
 class CalendarViewController: UIViewController {
     
     @IBOutlet var calendarView: JTAppleCalendarView!
-    var calendarDataSource: [String:String] = [:]
+    @IBOutlet var plantLabel: UILabel!
+    @IBOutlet var totalWaterLabel: UILabel!
+    
+    let defaults = UserDefaults.standard
+    var calendarDataSource: [String:Any] = [:]
     var formatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MMM-yyyy"
@@ -28,6 +32,10 @@ class CalendarViewController: UIViewController {
         calendarView.scrollingMode = .stopAtEachCalendarFrame
         calendarView.showsHorizontalScrollIndicator = false
         populateDataSource()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        calendarView.reloadData()
     }
     
     func configureCell(view: JTAppleCell?, cellState: CellState) {
@@ -53,6 +61,13 @@ class CalendarViewController: UIViewController {
         } else {
             cell.selectedView.isHidden = true
         }
+        var selectedDate = formatter.string(from: cellState.date)
+        print(selectedDate)
+        if let data = defaults.dictionary(forKey: selectedDate), let plantName = data.first?.key, let total = data.first?.value {
+            plantLabel.text = "Plant: \(plantName)"
+            totalWaterLabel.text = "Total: \(total) oz"
+        }
+        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -79,12 +94,8 @@ class CalendarViewController: UIViewController {
     func populateDataSource() {
         // You can get the data from a server.
         // Then convert that data into a form that can be used by the calendar.
-        calendarDataSource = [
-            "07-Jan-2018": "SomeData",
-            "15-Jan-2018": "SomeMoreData",
-            "15-Feb-2018": "MoreData",
-            "21-Feb-2018": "onlyData",
-        ]
+        
+        calendarDataSource = defaults.dictionaryRepresentation()
         // update the calendar
         calendarView.reloadData()
     }

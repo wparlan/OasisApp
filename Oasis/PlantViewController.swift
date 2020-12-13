@@ -8,10 +8,17 @@
 import UIKit
 import CoreData
 
+
 class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     
     var plant: Plant? = nil
+    var isDead: Bool = false
+    let dateFormatter = DateFormatter()
+    var dailyWater = 0
+    var today = ""
+    let defaults = UserDefaults.standard
+    var hasLaunched = false
     
     @IBOutlet var waterImage: UIImageView!
     @IBOutlet var popupView: UIView!
@@ -30,11 +37,27 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         // Do any additional setup after loading the view.
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print(documentsDirectoryURL)
+        
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        today = UserDefaults.standard.string(forKey: "today")!
+        dailyWater = UserDefaults.standard.integer(forKey: "dailyWater")
+        
         popupView.isHidden = true
         pickerView.delegate = self
         pickerView.dataSource = self
-        initPlant()
-        loadPlant()
+        
+        hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunched")
+        if !hasLaunched {
+            hasLaunched = true
+            UserDefaults.standard.setValue(true, forKey: "hasLaunched")
+            UserDefaults.standard.setValue(dateFormatter.string(from: Date()), forKey: "today")
+            today = UserDefaults.standard.string(forKey: "today")!
+            initPlant()
+            savePlant()
+        }
+        else {
+            loadPlant()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,18 +90,19 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             plant = try context.fetch(request)[0]
             plantNameTextField.text = plant!.plantName
             if let unwrappedDateLastWatered = plant!.dateLastWatered {
-                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3  && plantImageView.image != UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead") {
+                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3 && !isDead {
+                    isDead = true;
                     plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead")
                     plant!.waterLevel = plant!.waterLevel - 16
                 }
                 //172800
-            }
-            else {
-                plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
+                else {
+                    plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
+                }
             }
         }
         catch {
-            print("Error loading plant \(error)")
+            print("No plant to load \(error)")
         }
     }
     
@@ -92,6 +116,15 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func waterButtonPressed(_ sender: UIButton) {
+        if plant!.phase == 3 {
+            let alertController = UIAlertController(title: "Time for a new plant!", message: "Your plant is fully grown. Go to the shop to buy a new  plant.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+                print("User pressed okay")
+            }))
+            present(alertController, animated: true, completion: { () -> Void in
+                print ("Alert presented")
+            })
+        }
         popupView.isHidden = false
         plant!.dateLastWatered = Date()
         savePlant()
@@ -111,8 +144,10 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func checkGrowth() {
-        if plantImageView.image == UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead") {
+        if isDead {
             plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
+            isDead = false
+            return      // dead plant should not be able to grow to next phase
         }
         switch plant!.phase {
         case 0:
@@ -146,6 +181,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         })
     }
     
+    
     // MARK: - Picker View
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -162,6 +198,16 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         let choiceIndex = pickerView.selectedRow(inComponent: 0) + 1
         plant!.waterLevel += Int32(choiceIndex) * 8
+        // reset dailyWater to be 0 if it is a new day
+        if today != dateFormatter.string(from: Date()) {
+            UserDefaults.standard.setValue(dateFormatter.string(from: Date()), forKey: "today")
+            today = dateFormatter.string(from: Date())
+            dailyWater = 0
+        }
+        dailyWater += choiceIndex * 8
+        UserDefaults.standard.setValue(dailyWater, forKey: "dailyWater")
+        let data = [plant!.plantName:dailyWater]
+        defaults.setValue(data, forKey: today)
         popupView.isHidden = true
         animateWater()
     }

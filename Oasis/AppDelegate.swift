@@ -11,18 +11,11 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var hasLaunched: Bool = false
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // check if first time lanching
         print("app did launch")
-        hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunched")
-        if !hasLaunched {
-            hasLaunched = true
-            UserDefaults.standard.setValue(true, forKey: "hasLaunched")
-        }
         
         
         // set daily notifications for morning, noon, evening, and night
