@@ -25,6 +25,7 @@ class NotificationHandler {
     }
     
     func setReminder(title: String, body: String, hour: Int, minute: Int) {
+        center.removePendingNotificationRequests(withIdentifiers: [title])
         // Configure notification
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
@@ -48,6 +49,7 @@ class NotificationHandler {
         }
     }
     func setReminder(title: String, body: String, timeInterval: Int) {
+        center.removePendingNotificationRequests(withIdentifiers: [title])
         // Configure notification
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
@@ -64,7 +66,11 @@ class NotificationHandler {
             if error != nil{
                 print("Something went wrong --> \(String(describing: error))")
             }
-            print ("Timed Notification scheduled")
+            print("Timed Notification at created at \(Date()). Will repeat every \(timeInterval) seconds.")
         }
+    }
+    
+    func clearNotifications() -> Void {
+        center.removeAllPendingNotificationRequests()
     }
 }

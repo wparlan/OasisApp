@@ -17,6 +17,7 @@
 		165386962578050200964188 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165386952578050200964188 /* TabBarViewController.swift */; };
 		1653869F257808DE00964188 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653869E257808DE00964188 /* MusicPlayer.swift */; };
 		165386A325780B8E00964188 /* blippy-loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 165386A225780B8E00964188 /* blippy-loop.mp3 */; };
+		1653ECE42586FF0B008BD530 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653ECE32586FF0B008BD530 /* SettingsViewController.swift */; };
 		1677372B25749AED00D70F6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677372A25749AED00D70F6D /* AppDelegate.swift */; };
 		1677372D25749AED00D70F6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1677372C25749AED00D70F6D /* SceneDelegate.swift */; };
 		1677373225749AED00D70F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1677373025749AED00D70F6D /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		165386952578050200964188 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1653869E257808DE00964188 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		165386A225780B8E00964188 /* blippy-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "blippy-loop.mp3"; sourceTree = "<group>"; };
+		1653ECE32586FF0B008BD530 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1677372725749AED00D70F6D /* Oasis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oasis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1677372A25749AED00D70F6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1677372C25749AED00D70F6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				1653869E257808DE00964188 /* MusicPlayer.swift */,
 				1626B18B2582097900E60BAE /* DateCell.swift */,
 				1626B18E2582C39500E60BAE /* DateHeader.swift */,
+				1653ECE32586FF0B008BD530 /* SettingsViewController.swift */,
 			);
 			path = Oasis;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				165386962578050200964188 /* TabBarViewController.swift in Sources */,
 				165386702577A80500964188 /* Plant+CoreDataProperties.swift in Sources */,
 				1626B18C2582097900E60BAE /* DateCell.swift in Sources */,
+				1653ECE42586FF0B008BD530 /* SettingsViewController.swift in Sources */,
 				1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */,
 				1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */,
 				1653869F257808DE00964188 /* MusicPlayer.swift in Sources */,
@@ -410,6 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GUYPJD4NUE;
 				INFOPLIST_FILE = Oasis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -430,6 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GUYPJD4NUE;
 				INFOPLIST_FILE = Oasis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
