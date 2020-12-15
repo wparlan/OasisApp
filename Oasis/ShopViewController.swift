@@ -29,7 +29,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLayoutSubviews()
 
         if let flowLayout = self.shopCollection.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.itemSize = CGSize(width: (self.shopCollection.bounds.width / 2) - 12, height: 200)
+            flowLayout.itemSize = CGSize(width: (self.shopCollection.bounds.width / 2) - 12, height: self.shopCollection.bounds.height / 3)
         }
     }
     
