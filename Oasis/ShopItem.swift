@@ -14,13 +14,13 @@ class ShopItem {
     var imageName: String = ""
     var phase1WaterNeeded: Int
     var phase2WaterNeeded: Int
-    var totalWaterNeeded: Int
+    var phase3WaterNeeded: Int
     
-    init (plantName: String, imageName: String, phase1WaterNeeded: Int, phase2WaterNeeded: Int, totalWaterNeeded: Int) {
+    init (plantName: String, imageName: String, phase1WaterNeeded: Int, phase2WaterNeeded: Int, phase3WaterNeeded: Int) {
         self.plantName = plantName
         self.imageName = imageName
         self.phase1WaterNeeded = phase1WaterNeeded
         self.phase2WaterNeeded = phase2WaterNeeded
-        self.totalWaterNeeded = totalWaterNeeded
+        self.phase3WaterNeeded = phase3WaterNeeded
     }
 }

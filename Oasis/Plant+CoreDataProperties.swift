@@ -23,10 +23,11 @@ extension Plant {
     @NSManaged public var phase: Int32
     @NSManaged public var phase1WaterNeeded: Int32
     @NSManaged public var phase2WaterNeeded: Int32
+    @NSManaged public var phase3WaterNeeded: Int32
     @NSManaged public var plantName: String?
-    @NSManaged public var totalWaterNeeded: Int32
     @NSManaged public var waterLevel: Int32
     @NSManaged public var isCurrent: Bool
+    @NSManaged public var totalWater: Int32
 
 }
 

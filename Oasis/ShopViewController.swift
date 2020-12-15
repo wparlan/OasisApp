@@ -36,23 +36,23 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK: - Shop Helper Functions
     func populateForSale() {
         // initialize heart plant
-        let heartplant = ShopItem(plantName: "Heart Plant", imageName: "heart-plant", phase1WaterNeeded: 8, phase2WaterNeeded: 30, totalWaterNeeded: 50)
+        let heartplant = ShopItem(plantName: "Heart Plant", imageName: "heart-plant", phase1WaterNeeded: 8, phase2WaterNeeded: 30, phase3WaterNeeded: 50)
         forSale.append(heartplant)
         
         // initialize rose
-        let rose = ShopItem(plantName: "Roses", imageName: "rose", phase1WaterNeeded: 24, phase2WaterNeeded: 48, totalWaterNeeded: 80)
+        let rose = ShopItem(plantName: "Roses", imageName: "rose", phase1WaterNeeded: 24, phase2WaterNeeded: 48, phase3WaterNeeded: 80)
         forSale.append(rose)
         
         // initialize cactus
-        let cactus = ShopItem(plantName: "Cactus", imageName: "cactus", phase1WaterNeeded: 32, phase2WaterNeeded: 64, totalWaterNeeded: 100)
+        let cactus = ShopItem(plantName: "Cactus", imageName: "cactus", phase1WaterNeeded: 32, phase2WaterNeeded: 64, phase3WaterNeeded: 100)
         forSale.append(cactus)
         
         // initialize sunflower
-        let sunflower = ShopItem(plantName: "Sunflower", imageName: "sunflower", phase1WaterNeeded: 30, phase2WaterNeeded: 60, totalWaterNeeded: 90)
+        let sunflower = ShopItem(plantName: "Sunflower", imageName: "sunflower", phase1WaterNeeded: 30, phase2WaterNeeded: 60, phase3WaterNeeded: 90)
         forSale.append(sunflower)
         
         // initialize coming soon
-        let comingSoon = ShopItem(plantName: "Coming Soon", imageName: "question-mark", phase1WaterNeeded: 0, phase2WaterNeeded: 0, totalWaterNeeded: 0)
+        let comingSoon = ShopItem(plantName: "Coming Soon", imageName: "question-mark", phase1WaterNeeded: 0, phase2WaterNeeded: 0, phase3WaterNeeded: 0)
         forSale.append(comingSoon)
     }
     
@@ -71,8 +71,8 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
             newPlant.imageName = plant.imageName
             newPlant.phase1WaterNeeded = Int32(plant.phase1WaterNeeded)
             newPlant.phase2WaterNeeded = Int32(plant.phase2WaterNeeded)
-            newPlant.totalWaterNeeded = Int32(plant.totalWaterNeeded)
-            savePlant()
+            newPlant.phase3WaterNeeded = Int32(plant.phase3WaterNeeded)
+            performSegue(withIdentifier: "unwindToPlant", sender: nil)
         }
         catch {
             print("Error loading plant \(error)")

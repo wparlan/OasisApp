@@ -24,13 +24,14 @@ class OasisViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func viewDidAppear(_ animated: Bool) {
         loadPlants()
+        collectionView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.itemSize = CGSize(width: self.collectionView.bounds.width, height: self.collectionView.bounds.height)
+            flowLayout.itemSize = CGSize(width: self.collectionView.bounds.width - 5, height: self.collectionView.bounds.height)
         }
     }
     
@@ -76,17 +77,17 @@ class OasisViewController: UIViewController, UICollectionViewDataSource, UIColle
         else {
             cell.dateFinishedLabel.text = "Date completed: In progress"
         }
-        cell.totalWaterLabel.text = "Total water: \(plant.waterLevel)"
+        cell.totalWaterLabel.text = "Total water: \(plant.totalWater) oz"
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 8;
+            return 5;
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3;
+        return 5;
     }
     
 

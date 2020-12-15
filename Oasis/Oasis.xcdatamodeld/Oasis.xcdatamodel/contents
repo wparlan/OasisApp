@@ -9,11 +9,12 @@
         <attribute name="phase" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="phase1WaterNeeded" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="phase2WaterNeeded" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="phase3WaterNeeded" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="plantName" optional="YES" attributeType="String"/>
-        <attribute name="totalWaterNeeded" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalWater" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="waterLevel" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Plant" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="Plant" positionX="-63" positionY="-18" width="128" height="223"/>
     </elements>
 </model>

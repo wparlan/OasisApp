@@ -77,7 +77,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         plant!.imageName = "heart-plant"
         plant!.phase1WaterNeeded = 8
         plant!.phase2WaterNeeded = 30
-        plant!.totalWaterNeeded = 50
+        plant!.phase3WaterNeeded = 50
         plant!.datePlanted = Date()
         plant!.isCurrent = true
         if let plantName = plantNameTextField.text {
@@ -170,7 +170,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
             }
         case 2:
-            if plant!.waterLevel >= plant!.totalWaterNeeded{
+            if plant!.waterLevel >= plant!.phase3WaterNeeded{
                 plant!.phase += 1
                 plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
                 plant!.dateCompleted = Date()
@@ -220,6 +220,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         let choiceIndex = pickerView.selectedRow(inComponent: 0) + 1
         plant!.waterLevel += Int32(choiceIndex) * 8
+        plant!.totalWater += Int32(choiceIndex) * 8
         // reset dailyWater to be 0 if it is a new day
         if today != dateFormatter.string(from: Date()) {
             UserDefaults.standard.setValue(dateFormatter.string(from: Date()), forKey: "today")
@@ -254,6 +255,10 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         plantNameTextField.resignFirstResponder()
     }
     
+    // MARK: - Segue
+    @IBAction func unwindToPlant(segue: UIStoryboardSegue) {
+        
+    }
 
     /*
     // MARK: - Navigation
