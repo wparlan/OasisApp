@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ShopViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // globals
     var forSale: [Plant] = []
@@ -63,6 +63,11 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         sunflower.phase2WaterNeeded = 60
         sunflower.totalWaterNeeded = 90
         forSale.append(sunflower)
+        
+        // initialize coming soon
+        let comingSoon = Plant(context: context)
+        comingSoon.plantName = "Coming Soon"
+        forSale.append(comingSoon)
     }
     
     // MARK: - Collection View Functions
@@ -83,8 +88,20 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = shopCollection.dequeueReusableCell(withReuseIdentifier: "ShopCell", for: indexPath) as! ShopCell
         
         cell.plantNameLabel.text = plant.plantName
-        cell.plantImageView.image = UIImage(named: "\(plant.imageName!)-phase-3")
+        if index < forSale.count - 1 {
+            cell.plantImageView.image = UIImage(named: "\(plant.imageName!)-phase-3")
+        }
+        else {
+            cell.plantImageView.image = UIImage(named: "question-mark")
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 10;
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 3;
     }
     
 
