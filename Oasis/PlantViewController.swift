@@ -102,6 +102,9 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                     plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
                 }
             }
+            else {
+                plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-0")
+            }
         }
         catch {
             print("No plant to load \(error)")
@@ -126,6 +129,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             present(alertController, animated: true, completion: { () -> Void in
                 print ("Alert presented")
             })
+            return
         }
         popupView.isHidden = false
         plant!.dateLastWatered = Date()
@@ -166,6 +170,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             if plant!.waterLevel >= plant!.totalWaterNeeded{
                 plant!.phase += 1
                 plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)")
+                plant!.dateCompleted = Date()
                 alertFullyGrown()
             }
         default:

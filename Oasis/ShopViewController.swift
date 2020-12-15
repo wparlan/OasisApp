@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ShopViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // globals
-    var forSale: [Plant] = []
+    var forSale: [ShopItem] = []
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // outlets
@@ -32,52 +33,61 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    // MARK: - Shop Helper Functions
     func populateForSale() {
         // initialize heart plant
-        let heartplant = Plant(context: context)
-        heartplant.plantName = "Heart Plant"
-        heartplant.phase = 0
-        heartplant.imageName = "heart-plant"
-        heartplant.phase1WaterNeeded = 8
-        heartplant.phase2WaterNeeded = 30
-        heartplant.totalWaterNeeded = 50
+        let heartplant = ShopItem(plantName: "Heart Plant", imageName: "heart-plant", phase1WaterNeeded: 8, phase2WaterNeeded: 30, totalWaterNeeded: 50)
         forSale.append(heartplant)
         
         // initialize rose
-        let rose = Plant(context: context)
-        rose.plantName = "Roses"
-        rose.phase = 0
-        rose.imageName = "rose"
-        rose.phase1WaterNeeded = 24
-        rose.phase2WaterNeeded = 48
-        rose.totalWaterNeeded = 80
+        let rose = ShopItem(plantName: "Roses", imageName: "rose", phase1WaterNeeded: 24, phase2WaterNeeded: 48, totalWaterNeeded: 80)
         forSale.append(rose)
         
         // initialize cactus
-        let cactus = Plant(context: context)
-        cactus.plantName = "Cactus"
-        cactus.phase = 0
-        cactus.imageName = "cactus"
-        cactus.phase1WaterNeeded = 32
-        cactus.phase2WaterNeeded = 64
-        cactus.totalWaterNeeded = 100
+        let cactus = ShopItem(plantName: "Cactus", imageName: "cactus", phase1WaterNeeded: 32, phase2WaterNeeded: 64, totalWaterNeeded: 100)
         forSale.append(cactus)
         
         // initialize sunflower
-        let sunflower = Plant(context: context)
-        sunflower.plantName = "Sunflower"
-        sunflower.phase = 0
-        sunflower.imageName = "sunflower"
-        sunflower.phase1WaterNeeded = 30
-        sunflower.phase2WaterNeeded = 60
-        sunflower.totalWaterNeeded = 90
+        let sunflower = ShopItem(plantName: "Sunflower", imageName: "sunflower", phase1WaterNeeded: 30, phase2WaterNeeded: 60, totalWaterNeeded: 90)
         forSale.append(sunflower)
         
         // initialize coming soon
-        let comingSoon = Plant(context: context)
-        comingSoon.plantName = "Coming Soon"
+        let comingSoon = ShopItem(plantName: "Coming Soon", imageName: "question-mark", phase1WaterNeeded: 0, phase2WaterNeeded: 0, totalWaterNeeded: 0)
         forSale.append(comingSoon)
     }
+    
+    func replaceOldPlant(with plant: ShopItem) {
+        let request: NSFetchRequest<Plant> = Plant.fetchRequest()
+        request.predicate = NSPredicate(format: "isCurrent == true")
+        do {
+            let oldPlant = try context.fetch(request)[0]
+            let newPlant = Plant(context: context)
+            oldPlant.isCurrent = false
+            newPlant.isCurrent = true
+            newPlant.waterLevel = 0
+            newPlant.phase = 0
+            newPlant.datePlanted = Date()
+            newPlant.plantName = ""
+            newPlant.imageName = plant.imageName
+            newPlant.phase1WaterNeeded = Int32(plant.phase1WaterNeeded)
+            newPlant.phase2WaterNeeded = Int32(plant.phase2WaterNeeded)
+            newPlant.totalWaterNeeded = Int32(plant.totalWaterNeeded)
+            savePlant()
+        }
+        catch {
+            print("Error loading plant \(error)")
+        }
+    }
+    
+    func savePlant() {
+        do {
+            try context.save()
+        }
+        catch {
+            print("Error saving plant \(error)")
+        }
+    }
+    
     
     // MARK: - Collection View Functions
     
@@ -98,7 +108,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         cell.plantNameLabel.text = plant.plantName
         if index < forSale.count - 1 {
-            cell.plantImageView.image = UIImage(named: "\(plant.imageName!)-phase-3")
+            cell.plantImageView.image = UIImage(named: "\(plant.imageName)-phase-3")
         }
         else {
             cell.plantImageView.image = UIImage(named: "question-mark")
@@ -109,10 +119,60 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return 8;
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 3;
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // user cannot select the "coming soon" cell
+        if indexPath.row == forSale.count - 1 {
+            return
+        }
+        let selectedPlant = forSale[indexPath.row]
+        
+        let request: NSFetchRequest<Plant> = Plant.fetchRequest()
+        request.predicate = NSPredicate(format: "isCurrent == true")
+        do {
+            let currentPlant = try context.fetch(request)[0]
+            if currentPlant.phase != 3 {
+                alertInvalid()
+            }
+            else {
+                verifyChoice(plant: selectedPlant)
+            }
+        }
+        catch {
+            print("Error loading plant \(error)")
+        }
+        
+    }
+    
+    
+    // MARK: - Alerts
+    func verifyChoice(plant: ShopItem) {
+        let alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to grow a \(plant.plantName.lowercased())?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
+            print("User pressed okay")
+            self.replaceOldPlant(with: plant)
+        }))
+        alertController.addAction(UIAlertAction(title: "Choose another", style: .cancel, handler: { (action) -> Void in
+            print("User pressed cancel")
+        }))
+        present(alertController, animated: true, completion: { () -> Void in
+            print ("Alert presented")
+        })
+    }
+    
+    func alertInvalid() {
+        let alertController = UIAlertController(title: "Keep growing!", message: "You cannot get a new plant until you are done growing the current one.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+            print("User pressed okay")
+        }))
+        present(alertController, animated: true, completion: { () -> Void in
+            print ("Alert presented")
+        })
+    }
 
     /*
     // MARK: - Navigation
