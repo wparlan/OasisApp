@@ -2,6 +2,7 @@
 //  ShopViewController.swift
 //  Oasis
 //
+// sources: https://www.journaldev.com/10678/ios-uicollectionview-example-tutorial
 //  Created by Greeley Lindberg on 12/14/20.
 //
 
@@ -21,6 +22,14 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         // Do any additional setup after loading the view.
         populateForSale()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if let flowLayout = self.shopCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.itemSize = CGSize(width: (self.shopCollection.bounds.width / 2) - 12, height: 200)
+        }
     }
     
     func populateForSale() {
@@ -98,7 +107,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 10;
+            return 8;
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 3;

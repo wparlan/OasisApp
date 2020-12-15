@@ -37,8 +37,6 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print(documentsDirectoryURL)
         
         dateFormatter.dateFormat = "dd-MMM-yyyy"
-        today = UserDefaults.standard.string(forKey: "today")!
-        dailyWater = UserDefaults.standard.integer(forKey: "dailyWater")
         
         popupView.isHidden = true
         pickerView.delegate = self
@@ -56,6 +54,9 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         else {
             loadPlant()
         }
+        
+        today = UserDefaults.standard.string(forKey: "today")!
+        dailyWater = UserDefaults.standard.integer(forKey: "dailyWater")
     }
     
     override func viewDidAppear(_ animated: Bool) {
