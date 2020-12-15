@@ -11,25 +11,23 @@ import CoreData
 
 class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    
+    // globals
     var plant: Plant? = nil
     var isDead: Bool = false
     let dateFormatter = DateFormatter()
     var dailyWater = 0
     var today = ""
     let defaults = UserDefaults.standard
-    var hasLaunched = false
+    var hasPlant = false
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let options = ["Cup (8 oz)", "Small water bottle (16 oz)", "Medium water bottle (22 oz)", "Large water bottle (32 oz)"]
     
+    // IBOutlets
     @IBOutlet var waterImage: UIImageView!
     @IBOutlet var popupView: UIView!
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet var plantNameTextField: UITextField!
     @IBOutlet var plantImageView: UIImageView!
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
-    let options = ["Cup (8 oz)", "Small water bottle (16 oz)", "Medium water bottle (22 oz)", "Large water bottle (32 oz)"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +44,10 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunched")
-        if !hasLaunched {
-            hasLaunched = true
-            UserDefaults.standard.setValue(true, forKey: "hasLaunched")
+        hasPlant = UserDefaults.standard.bool(forKey: "hasPlant")
+        if !hasPlant {
+            hasPlant = true
+            UserDefaults.standard.setValue(true, forKey: "hasPlant")
             UserDefaults.standard.setValue(dateFormatter.string(from: Date()), forKey: "today")
             today = UserDefaults.standard.string(forKey: "today")!
             initPlant()
@@ -93,9 +91,10 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3 {
                     isDead = true;
                     plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead")
-                    if ((plant!.phase == 1 && plant!.waterLevel > plant!.phase1WaterNeeded) || plant!.phase == 2 && plant!.waterLevel > plant!.phase2WaterNeeded) {
+                    if ((plant!.phase == 1 && plant!.waterLevel > plant!.phase1WaterNeeded) || (plant!.phase == 2 && plant!.waterLevel > plant!.phase2WaterNeeded)) {
                         plant!.waterLevel = plant!.waterLevel - 16
                     }
+                    alertDead()
                 }
                 //172800
                 else {
@@ -173,8 +172,20 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
     }
     
+    // MARK: - Alerts
+    
     func alertFullyGrown() {
         let alertController = UIAlertController(title: "Congratulations!", message: "Your plant is fully grown. Go to the shop to buy a new  plant.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+            print("User pressed okay")
+        }))
+        present(alertController, animated: true, completion: { () -> Void in
+            print ("Alert presented")
+        })
+    }
+    
+    func alertDead() {
+        let alertController = UIAlertController(title: "Uh oh!", message: "Your plant is wilting. Give it a drink of water to revive it. It's important to stay hydrated and healthy.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
             print("User pressed okay")
         }))

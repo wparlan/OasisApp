@@ -35,6 +35,7 @@ class CalendarViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        populateDataSource()
         calendarView.reloadData()
     }
     
@@ -61,8 +62,7 @@ class CalendarViewController: UIViewController {
         } else {
             cell.selectedView.isHidden = true
         }
-        var selectedDate = formatter.string(from: cellState.date)
-        print(selectedDate)
+        let selectedDate = formatter.string(from: cellState.date)
         if let data = defaults.dictionary(forKey: selectedDate), let plantName = data.first?.key, let total = data.first?.value {
             plantLabel.text = "Plant: \(plantName)"
             totalWaterLabel.text = "Total: \(total) oz"
@@ -83,7 +83,7 @@ class CalendarViewController: UIViewController {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
-        let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
+        let formatter = DateFormatter()
         formatter.dateFormat = "MMMM yyyy"
         
         let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: "DateHeader", for: indexPath) as! DateHeader
@@ -96,9 +96,6 @@ class CalendarViewController: UIViewController {
     }
     
     func populateDataSource() {
-        // You can get the data from a server.
-        // Then convert that data into a form that can be used by the calendar.
-        
         calendarDataSource = defaults.dictionaryRepresentation()
         // update the calendar
         calendarView.reloadData()
