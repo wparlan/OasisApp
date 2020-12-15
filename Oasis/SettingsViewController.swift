@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
                 let alertController = UIAlertController(title: "Notifications Saved", message: "Notification Settings Saved Succesfully", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                 present(alertController, animated: true, completion: nil)
+                print("Settings saved")
             }
         }
     }

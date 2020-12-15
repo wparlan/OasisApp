@@ -11,7 +11,7 @@ import CoreData
 
 class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    // globals
+    // local variables
     var plant: Plant? = nil
     var isDead: Bool = false
     let dateFormatter = DateFormatter()
@@ -21,6 +21,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var hasPlant = false
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let options = ["Cup (8 oz)", "Small water bottle (16 oz)", "Medium water bottle (22 oz)", "Large water bottle (32 oz)"]
+
     
     // IBOutlets
     @IBOutlet var waterImage: UIImageView!
@@ -31,6 +32,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadPlant), name: UIApplication.willEnterForegroundNotification, object: nil)
 
         // Do any additional setup after loading the view.
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -70,6 +72,10 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         savePlant()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     
     func initPlant() {
         plant = Plant(context: context)
@@ -85,14 +91,14 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
     }
     
-    func loadPlant() {
+    @objc func loadPlant() {
         let request: NSFetchRequest<Plant> = Plant.fetchRequest()
         request.predicate = NSPredicate(format: "isCurrent == true")
         do {
             plant = try context.fetch(request)[0]
             plantNameTextField.text = plant!.plantName
             if let unwrappedDateLastWatered = plant!.dateLastWatered {
-                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3 {
+                if Date().timeIntervalSince(unwrappedDateLastWatered) > 20 && plant!.phase != 3 && plant!.phase != 0 {
                     isDead = true;
                     plantImageView.image = UIImage(named: "\(plant!.imageName!)-phase-\(plant!.phase)-dead")
                     if ((plant!.phase == 1 && plant!.waterLevel > plant!.phase1WaterNeeded) || (plant!.phase == 2 && plant!.waterLevel > plant!.phase2WaterNeeded)) {
@@ -256,9 +262,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     // MARK: - Segue
-    @IBAction func unwindToPlant(segue: UIStoryboardSegue) {
-        
-    }
+    @IBAction func unwindToPlant(segue: UIStoryboardSegue) {}
 
     /*
     // MARK: - Navigation

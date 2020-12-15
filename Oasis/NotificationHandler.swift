@@ -24,7 +24,7 @@ class NotificationHandler {
         }
     }
     
-    func setReminder(title: String, body: String, hour: Int, minute: Int) {
+    func setReminder(identifier: String, title: String, body: String, hour: Int, minute: Int) {
         center.removePendingNotificationRequests(withIdentifiers: [title])
         // Configure notification
         let content = UNMutableNotificationContent()
@@ -39,7 +39,7 @@ class NotificationHandler {
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
          
         // Request
-        let request = UNNotificationRequest(identifier: "Daily Reminder", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         center.add(request) {(error) in
             // check error parameter here
             if error != nil{
@@ -66,7 +66,7 @@ class NotificationHandler {
             if error != nil{
                 print("Something went wrong --> \(String(describing: error))")
             }
-            print("Timed Notification at created at \(Date()). Will repeat every \(timeInterval) seconds.")
+            print("Timed Notification at created.")
         }
     }
     

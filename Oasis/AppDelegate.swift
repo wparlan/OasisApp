@@ -11,6 +11,8 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var hasLaunched: Bool = false
+    let center = UNUserNotificationCenter.current()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -23,14 +25,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // set daily notifications for morning, noon, evening, and night
             let notification = NotificationHandler()
             notification.requestPermission()
-            notification.setReminder(title: "Good Morning!" , body: "Skip the coffee--instead, start the day off right with a tall glass of water!", hour: 7, minute: 0)
-            notification.setReminder(title: "Good Afternoon!", body: "Don't forget to stay hydrated!", hour: 12, minute: 30)
-            notification.setReminder(title: "Good Evening!", body: "The day is almost over. Keep up the good work!", hour: 18, minute: 00)
-            notification.setReminder(title: "Good night!", body: "Don't forget to go to sleep with a glass of water by your bed in case you get thirsty in the night", hour: 21, minute: 0)
+            notification.setReminder(identifier: "Default Morning", title: "Good Morning!" , body: "Skip the coffee--instead, start the day off right with a tall glass of water!", hour: 7, minute: 0)
+            notification.setReminder(identifier: "Default Afternoon", title: "Good Afternoon!", body: "Don't forget to stay hydrated!", hour: 12, minute: 30)
+            notification.setReminder(identifier: "Default Evening", title: "Good Evening!", body: "The day is almost over. Keep up the good work!", hour: 18, minute: 00)
+            notification.setReminder(identifier: "Default Night", title: "Good night!", body: "Don't forget to go to sleep with a glass of water by your bed in case you get thirsty in the night", hour: 21, minute: 0)
             notification.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water", timeInterval: 120)
+            
+            // set notification user defaults
+            UserDefaults.standard.setValue(true, forKey: "disableAll")
+            UserDefaults.standard.setValue(true, forKey: "interval")
+            UserDefaults.standard.setValue(true, forKey: "morningAlarm")
+            UserDefaults.standard.setValue(true, forKey: "afternoonAlarm")
+            UserDefaults.standard.setValue(true, forKey: "eveningAlarm")
+            UserDefaults.standard.setValue(true, forKey: "nightAlarm")
+            UserDefaults.standard.setValue("4", forKey: "hour")
+            UserDefaults.standard.setValue("0", forKey: "minute")
         }
         
-
+        center.removeAllDeliveredNotifications()
         return true
     }
     
@@ -54,8 +66,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // want to reload data in plant view controller
+        // clear notifications in notiication center
+        center.removeAllDeliveredNotifications()
     }
+    
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

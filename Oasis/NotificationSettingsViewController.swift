@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-//TODO: Add functionality for X button across settings
 class NotificationSettingsViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Local Variables
     let notificationHandler: NotificationHandler = NotificationHandler()
@@ -30,6 +28,47 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
     @IBOutlet weak var afternoonDatePicker: UIDatePicker!
     @IBOutlet weak var eveningDatePicker: UIDatePicker!
     @IBOutlet weak var nightDatePicker: UIDatePicker!
+    
+    // MARK: - View Functions
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        // switch status
+        disableAllSwitch.isOn = UserDefaults.standard.bool(forKey: "disableAll")
+        intervalSwitch.isOn = UserDefaults.standard.bool(forKey: "interval")
+        morningAlarm.isOn = UserDefaults.standard.bool(forKey: "morningAlarm")
+        afternoonAlarm.isOn = UserDefaults.standard.bool(forKey: "afternoonAlarm")
+        eveningAlarm.isOn = UserDefaults.standard.bool(forKey: "eveningAlarm")
+        nightAlarm.isOn = UserDefaults.standard.bool(forKey: "nightAlarm")
+        // disable corresponding views
+        if !(disableAllSwitch.isOn){
+            disableAll()
+        }
+        else{
+            intervalToggled(intervalSwitch)
+            morningToggled(morningAlarm)
+            afternoonToggled(afternoonAlarm)
+            eveningToggled(eveningAlarm)
+            nightToggled(nightAlarm)
+        }
+        
+        // text field status
+        hourTextField.text = UserDefaults.standard.string(forKey: "hour")
+        minuteTextField.text = UserDefaults.standard.string(forKey: "minute")
+        // date picker status
+        guard let morningDate = UserDefaults.standard.object(forKey: "morningDate") as? Date, let afternoonDate = UserDefaults.standard.object(forKey: "afternoonDate") as? Date, let eveningDate = UserDefaults.standard.object(forKey: "eveningDate") as? Date, let nightDate = UserDefaults.standard.object(forKey: "nightDate") as? Date else{
+            return
+        }
+        morningDatePicker.setDate(morningDate, animated: true)
+        afternoonDatePicker.setDate(afternoonDate, animated: true)
+        eveningDatePicker.setDate(eveningDate, animated: true)
+        nightDatePicker.setDate(nightDate, animated: true)
+    }
     
     //MARK: - Segue Functions
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -58,6 +97,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier{
+            saveUI()
             if identifier == "SaveNotificationsSegue"{
                 notificationHandler.clearNotifications()
                 if !(disableAllSwitch.isOn) {
@@ -65,7 +105,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
                 }
                 if intervalSwitch.isOn{
                     let interval = Int(hourTextField.text!)!*3600 + Int(minuteTextField.text!)!*60
-                    notificationHandler.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water. \(Date()) Next one at \(Date(timeInterval: 180, since: Date()))", timeInterval: interval)
+                    notificationHandler.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water.", timeInterval: interval)
                 }
                 if morningAlarm.isOn{
                     let morningDate = morningDatePicker.date
@@ -74,7 +114,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
                     let hour = calendar.component(.hour, from: morningDate)
                     let minute = calendar.component(.minute, from: morningDate)
                     
-                    notificationHandler.setReminder(title: "Good Morning!" , body: "Skip the coffee--instead, start the day off right with a tall glass of water!", hour: hour, minute: minute)
+                    notificationHandler.setReminder(identifier: "Morning Alarm",title: "Good Morning!" , body: "Skip the coffee--instead, start the day off right with a tall glass of water!", hour: hour, minute: minute)
                 }
                 if afternoonAlarm.isOn{
                     let afternoonDate = afternoonDatePicker.date
@@ -82,7 +122,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
                     let hour = calendar.component(.hour, from: afternoonDate)
                     let minute = calendar.component(.minute, from: afternoonDate)
                     
-                    notificationHandler.setReminder(title: "Good Afternoon!", body: "Don't forget to stay hydrated!", hour: hour, minute: minute)
+                    notificationHandler.setReminder(identifier: "Afternoon Alarm", title: "Good Afternoon!", body: "Don't forget to stay hydrated!", hour: hour, minute: minute)
                 }
                 if eveningAlarm.isOn{
                     let eveningDate = eveningDatePicker.date
@@ -90,15 +130,15 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
                     let hour = calendar.component(.hour, from: eveningDate)
                     let minute = calendar.component(.minute, from: eveningDate)
                     
-                    notificationHandler.setReminder(title: "Good Evening!", body: "The day is almost over. Keep up the good work!", hour: hour, minute: minute)
+                    notificationHandler.setReminder(identifier: "Evening Alarm", title: "Good Evening!", body: "The day is almost over. Keep up the good work!", hour: hour, minute: minute)
                 }
-                if eveningAlarm.isOn{
+                if nightAlarm.isOn{
                     let nightDate = nightDatePicker.date
                     let calendar = Calendar.current
                     let hour = calendar.component(.hour, from: nightDate)
                     let minute = calendar.component(.minute, from: nightDate)
                     
-                    notificationHandler.setReminder(title: "Good night!", body: "Don't forget to go to sleep with a glass of water by your bed in case you get thirsty in the night", hour: hour, minute: minute)
+                    notificationHandler.setReminder(identifier: "Night Alarm", title: "Good night!", body: "Don't forget to go to sleep with a glass of water by your bed in case you get thirsty in the night", hour: hour, minute: minute)
                 }
             }
         }
@@ -204,11 +244,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         eveningAlarm.setOn(true, animated: true)
         nightAlarm.setOn(true, animated: true)
         
-        // disable text fields
+        // enable text fields
         hourTextField.isEnabled = true
         minuteTextField.isEnabled = true
         
-        // disable date pickers
+        // enable date pickers
         morningDatePicker.isEnabled = true
         afternoonDatePicker.isEnabled = true
         eveningDatePicker.isEnabled = true
@@ -219,10 +259,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
-    
-    // MARK: - View functions
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
+    func saveUI(){
         // switch states
         UserDefaults.standard.setValue(disableAllSwitch.isOn, forKey: "disableAll")
         UserDefaults.standard.setValue(intervalSwitch.isOn, forKey: "interval")
@@ -242,43 +279,6 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         UserDefaults.standard.setValue(eveningDatePicker.date, forKey: "eveningDate")
         UserDefaults.standard.setValue(nightDatePicker.date, forKey: "nightDate")
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        // switch status
-        disableAllSwitch.isOn = UserDefaults.standard.bool(forKey: "disableAll")
-        intervalSwitch.isOn = UserDefaults.standard.bool(forKey: "interval")
-        morningAlarm.isOn = UserDefaults.standard.bool(forKey: "morningAlarm")
-        afternoonAlarm.isOn = UserDefaults.standard.bool(forKey: "afternoonAlarm")
-        eveningAlarm.isOn = UserDefaults.standard.bool(forKey: "eveningAlarm")
-        nightAlarm.isOn = UserDefaults.standard.bool(forKey: "nightAlarm")
-        // disable corresponding views
-        if !(disableAllSwitch.isOn){
-            disableAll()
-        }
-        else{
-            intervalToggled(intervalSwitch)
-            morningToggled(morningAlarm)
-            afternoonToggled(afternoonAlarm)
-            eveningToggled(eveningAlarm)
-            nightToggled(nightAlarm)
-        }
-        
-        // text field status
-        hourTextField.text = UserDefaults.standard.string(forKey: "hour")
-        minuteTextField.text = UserDefaults.standard.string(forKey: "minute")
-        // date picker status
-        guard let morningDate = UserDefaults.standard.object(forKey: "morningDate") as? Date, let afternoonDate = UserDefaults.standard.object(forKey: "afternoonDate") as? Date, let eveningDate = UserDefaults.standard.object(forKey: "eveningDate") as? Date, let nightDate = UserDefaults.standard.object(forKey: "nightDate") as? Date else{
-            return
-        }
-        morningDatePicker.setDate(morningDate, animated: true)
-        afternoonDatePicker.setDate(afternoonDate, animated: true)
-        eveningDatePicker.setDate(eveningDate, animated: true)
-        nightDatePicker.setDate(nightDate, animated: true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 }
+    
+
