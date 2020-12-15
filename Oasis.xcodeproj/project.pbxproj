@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16009B3C25887C310075486D /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16009B3B25887C310075486D /* ShopItem.swift */; };
+		16009B3F258889F70075486D /* OasisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16009B3E258889F70075486D /* OasisViewController.swift */; };
+		16009B4225888AEE0075486D /* OasisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16009B4125888AEE0075486D /* OasisCell.swift */; };
 		1626B1882582058D00E60BAE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B1872582058D00E60BAE /* CalendarViewController.swift */; };
 		1626B18C2582097900E60BAE /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B18B2582097900E60BAE /* DateCell.swift */; };
 		1626B18F2582C39500E60BAE /* DateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1626B18E2582C39500E60BAE /* DateHeader.swift */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		16009B3B25887C310075486D /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
+		16009B3E258889F70075486D /* OasisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OasisViewController.swift; sourceTree = "<group>"; };
+		16009B4125888AEE0075486D /* OasisCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OasisCell.swift; sourceTree = "<group>"; };
 		1626B1872582058D00E60BAE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1626B18B2582097900E60BAE /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		1626B18E2582C39500E60BAE /* DateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeader.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				1626B1872582058D00E60BAE /* CalendarViewController.swift */,
 				1635A1BF2587F6DD008CEFCE /* ShopViewController.swift */,
 				1677375F25772A1F00D70F6D /* PlantViewController.swift */,
+				16009B3E258889F70075486D /* OasisViewController.swift */,
 				1653ECE32586FF0B008BD530 /* SettingsViewController.swift */,
 				1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */,
 				1677373625749AF000D70F6D /* Assets.xcassets */,
@@ -131,6 +136,7 @@
 				1626B18E2582C39500E60BAE /* DateHeader.swift */,
 				1635A1C32587FE83008CEFCE /* ShopCell.swift */,
 				16009B3B25887C310075486D /* ShopItem.swift */,
+				16009B4125888AEE0075486D /* OasisCell.swift */,
 			);
 			path = Oasis;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 				16538690257800F200964188 /* NotificationHandler.swift in Sources */,
 				1635A1C02587F6DD008CEFCE /* ShopViewController.swift in Sources */,
 				1635A1C42587FE83008CEFCE /* ShopCell.swift in Sources */,
+				16009B3F258889F70075486D /* OasisViewController.swift in Sources */,
 				1677372B25749AED00D70F6D /* AppDelegate.swift in Sources */,
 				1626B1882582058D00E60BAE /* CalendarViewController.swift in Sources */,
 				1677376025772A1F00D70F6D /* PlantViewController.swift in Sources */,
@@ -274,6 +281,7 @@
 				1653868D2577FFA500964188 /* NotificationSettingsViewController.swift in Sources */,
 				1653866F2577A80500964188 /* Plant+CoreDataClass.swift in Sources */,
 				1653869F257808DE00964188 /* MusicPlayer.swift in Sources */,
+				16009B4225888AEE0075486D /* OasisCell.swift in Sources */,
 				1677372D25749AED00D70F6D /* SceneDelegate.swift in Sources */,
 				16009B3C25887C310075486D /* ShopItem.swift in Sources */,
 			);

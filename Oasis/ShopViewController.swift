@@ -96,7 +96,6 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(forSale.count)
         return forSale.count
     }
     

@@ -38,10 +38,12 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         dateFormatter.dateFormat = "dd-MMM-yyyy"
         
+        // picker set up
         popupView.isHidden = true
         pickerView.delegate = self
         pickerView.dataSource = self
         
+        // check if first launch
         hasPlant = UserDefaults.standard.bool(forKey: "hasPlant")
         if !hasPlant {
             hasPlant = true
@@ -55,6 +57,7 @@ class PlantViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             loadPlant()
         }
         
+        // load user defaults
         today = UserDefaults.standard.string(forKey: "today")!
         dailyWater = UserDefaults.standard.integer(forKey: "dailyWater")
     }
