@@ -25,10 +25,6 @@ class TabBarViewController: UITabBarController {
         selectedIndex = 2
         loadMusic()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        loadMusic()
-    }
-    
     // MARK: - Music Helper Functions
     func loadMusic(){
         music = UserDefaults.standard.bool(forKey: "Music")

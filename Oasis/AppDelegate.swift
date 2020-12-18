@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !hasLaunched {
             hasLaunched = true
             UserDefaults.standard.setValue(true, forKey: "hasLaunched")
+            // Enable music for first time
+            UserDefaults.standard.setValue(true, forKey: "Music")
             // set daily notifications for morning, noon, evening, and night
             let notification = NotificationHandler()
             notification.requestPermission()
