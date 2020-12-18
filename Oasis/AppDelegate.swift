@@ -1,8 +1,13 @@
 //
 //  AppDelegate.swift
 //  Oasis
+//  AppDelegate for the Oasis App.
+//  CPSC 315-01 Fall 2020
+//  Final Project
+//  Source: 
 //
-//  Created by Greeley Lindberg on 11/29/20.
+//  Created by Greeley Lindberg and William Parlan on 11/29/20.
+//  Copyright © 2020 Lindberg Parlan. All rights reserved.
 //
 
 import UIKit
@@ -29,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             notification.setReminder(identifier: "Default Afternoon", title: "Good Afternoon!", body: "Don't forget to stay hydrated!", hour: 12, minute: 30)
             notification.setReminder(identifier: "Default Evening", title: "Good Evening!", body: "The day is almost over. Keep up the good work!", hour: 18, minute: 00)
             notification.setReminder(identifier: "Default Night", title: "Good night!", body: "Don't forget to go to sleep with a glass of water by your bed in case you get thirsty in the night", hour: 21, minute: 0)
-            notification.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water", timeInterval: 120)
+            notification.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water?", timeInterval: 120)
             
             // set notification user defaults
             UserDefaults.standard.setValue(true, forKey: "disableAll")

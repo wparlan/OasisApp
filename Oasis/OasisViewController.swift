@@ -1,8 +1,14 @@
 //
 //  OasisViewController.swift
 //  Oasis
+//  View Controller for the Oasis tab of the Oasis App.
+//  CPSC 315-01 Fall 2020
+//  Final Project
+//  Sources: https://theswiftdev.com/ultimate-uicollectionview-guide-with-ios-examples-written-in-swift/
+// https://www.journaldev.com/10678/ios-uicollectionview-example-tutorial
 //
-//  Created by Greeley Lindberg on 12/14/20.
+//  Created by Greeley Lindberg and William Parlan on 12/14/20.
+//  Copyright © 2020 Lindberg Parlan. All rights reserved.
 //
 
 import UIKit
@@ -10,9 +16,11 @@ import CoreData
 
 class OasisViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    // local variables
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var plants: [Plant] = []
     
+    // outlets
     @IBOutlet var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -21,12 +29,14 @@ class OasisViewController: UIViewController, UICollectionViewDataSource, UIColle
 
         // Do any additional setup after loading the view.
     }
-    
+   
+    // reloads plants and updates the collection view when the view appears
     override func viewDidAppear(_ animated: Bool) {
         loadPlants()
         collectionView.reloadData()
     }
     
+    // used to resize OasisCells dynamically
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -36,6 +46,10 @@ class OasisViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     // MARK: - Oasis Helper Functions
+    
+    /**
+     Loads plants from CoreData.
+     */
     func loadPlants() {
         let request: NSFetchRequest<Plant> = Plant.fetchRequest()
         do {
@@ -48,14 +62,17 @@ class OasisViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // MARK: - Collection View Functions
     
+    // returns number of sections in collection view.
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    // returns number of itemes in section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return plants.count
     }
     
+    // updates the cell with its respective Plant data.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dateFomatter = DateFormatter()
         dateFomatter.dateFormat = "MM/dd/yyyy"
@@ -82,10 +99,12 @@ class OasisViewController: UIViewController, UICollectionViewDataSource, UIColle
         return cell
     }
     
+    // Assigns spacing for rows and columns
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return 5;
     }
     
+    // Assigns spacing for items in rows and columns
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5;
     }

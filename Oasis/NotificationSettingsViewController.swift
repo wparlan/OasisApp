@@ -1,8 +1,13 @@
 //
 //  NotificationSettingsViewController.swift
 //  Oasis
+//  View Controller for the Notification Settings of the Oasis App.
+//  CPSC 315-01 Fall 2020
+//  Final Project
+//  Source: https://www.hackingwithswift.com/books/ios-swiftui/scheduling-local-notifications
 //
-//  Created by Parlan, William C on 12/1/20.
+//  Created by Greeley Lindberg and William Parlan on 12/1/20.
+//  Copyright © 2020 Lindberg Parlan. All rights reserved.
 //
 
 import UIKit
@@ -33,9 +38,12 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-    
+    /**
+     When this view appears, restore the status of the UI to the last saved state
+     - Parameter animated: Plays an animation if true.
+     - Returns: Void
+     */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         // switch status
@@ -71,6 +79,13 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
     }
     
     //MARK: - Segue Functions
+    /**
+     Checks to make sure the user is allowed to save current settings, with main issue being the timed interval potentially being too short.
+     - Parameters:
+        - identifier: Identifier of the triggered segue
+        - sender: Button that triggered segue
+     - Returns: Bool; true if the segue should be performed, false otherwise
+     */
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "SaveNotificationsSegue"{
             if intervalSwitch.isOn{
@@ -95,19 +110,26 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         return true
     }
     
+    /**
+     Allows the settings to be saved by creating new notifications and saving the UI state
+     - Parameters:
+        - segue: The segue being performed
+        - sender: The button that triggered this segue
+     - Returns: Void
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier{
-            saveUI()
             if identifier == "SaveNotificationsSegue"{
-                notificationHandler.clearNotifications()
-                if !(disableAllSwitch.isOn) {
+                saveUI() // Save the state of switches, text fields, and date pickers
+                notificationHandler.clearNotifications() // clear all the old pending notifications
+                if !(disableAllSwitch.isOn) { // if no notifications, do not create any
                     return
                 }
-                if intervalSwitch.isOn{
+                if intervalSwitch.isOn{ // create timed interval notification
                     let interval = Int(hourTextField.text!)!*3600 + Int(minuteTextField.text!)!*60
-                    notificationHandler.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water.", timeInterval: interval)
+                    notificationHandler.setReminder(title: "Timed Reminder", body: "Hey it's been a while, why don't you break for a glass of water?", timeInterval: interval)
                 }
-                if morningAlarm.isOn{
+                if morningAlarm.isOn{ // set morning alarm
                     let morningDate = morningDatePicker.date
                     print("morning date in prepare for \(morningDate)")
                     let calendar = Calendar.current
@@ -116,7 +138,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
                     
                     notificationHandler.setReminder(identifier: "Morning Alarm",title: "Good Morning!" , body: "Skip the coffee--instead, start the day off right with a tall glass of water!", hour: hour, minute: minute)
                 }
-                if afternoonAlarm.isOn{
+                if afternoonAlarm.isOn{ // set afternoon alarm
                     let afternoonDate = afternoonDatePicker.date
                     let calendar = Calendar.current
                     let hour = calendar.component(.hour, from: afternoonDate)
@@ -124,7 +146,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
                     
                     notificationHandler.setReminder(identifier: "Afternoon Alarm", title: "Good Afternoon!", body: "Don't forget to stay hydrated!", hour: hour, minute: minute)
                 }
-                if eveningAlarm.isOn{
+                if eveningAlarm.isOn{ // set evening alarm
                     let eveningDate = eveningDatePicker.date
                     let calendar = Calendar.current
                     let hour = calendar.component(.hour, from: eveningDate)
@@ -132,7 +154,7 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
                     
                     notificationHandler.setReminder(identifier: "Evening Alarm", title: "Good Evening!", body: "The day is almost over. Keep up the good work!", hour: hour, minute: minute)
                 }
-                if nightAlarm.isOn{
+                if nightAlarm.isOn{ // set night alarm
                     let nightDate = nightDatePicker.date
                     let calendar = Calendar.current
                     let hour = calendar.component(.hour, from: nightDate)
@@ -145,6 +167,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
     }
     
     // MARK: - Switch Actions
+    /**
+     Disables or enables switches and interactive views as needed.
+     - Parameter sender: The disableAll switch
+     - Returns: Void
+     */
     @IBAction func disableAllToggled(_ sender: UISwitch) {
         if sender.isOn{
             enableAll()
@@ -153,7 +180,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
             disableAll()
         }
     }
-    
+    /**
+     Toggles the status of the interval notification
+     - Parameter sender: The interval switch.
+     - Returns: Void
+     */
     @IBAction func intervalToggled(_ sender: UISwitch) {
         if (sender.isOn){
             disableAllSwitch.setOn(true, animated: true)
@@ -166,6 +197,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         }
     }
     
+    /**
+     Toggles the status of the morning alarm.
+     - Parameter sender: The morning switch.
+     - Returns: Void
+     */
     @IBAction func morningToggled(_ sender: UISwitch) {
         if (sender.isOn){
             disableAllSwitch.setOn(true, animated: true)
@@ -176,6 +212,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         }
     }
     
+    /**
+     Toggles the status of the afternoon alarm.
+     - Parameter sender: The afternoon switch.
+     - Returns: Void
+     */
     @IBAction func afternoonToggled(_ sender: UISwitch) {
         if (sender.isOn){
             disableAllSwitch.setOn(true, animated: true)
@@ -186,6 +227,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         }
     }
     
+    /**
+     Toggles the status of the evening alarm.
+     - Parameter sender: The evening switch.
+     - Returns: Void
+     */
     @IBAction func eveningToggled(_ sender: UISwitch) {
         if (sender.isOn){
             disableAllSwitch.setOn(true, animated: true)
@@ -196,6 +242,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         }
     }
     
+    /**
+     Toggles the status of the night alarm.
+     - Parameter sender: The night switch.
+     - Returns: Void
+     */
     @IBAction func nightToggled(_ sender: UISwitch) {
         if (sender.isOn){
             disableAllSwitch.setOn(true, animated: true)
@@ -207,6 +258,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
     }
     
     //MARK: - Tap Gesture
+    /**
+     When the user taps the background, exit the interactive views (text fields and date pickers).
+     - Parameter sender: Background tap.
+     - Returns: Void
+     */
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer){
         hourTextField.resignFirstResponder()
         minuteTextField.resignFirstResponder()
@@ -214,10 +270,14 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         afternoonDatePicker.resignFirstResponder()
         eveningDatePicker.resignFirstResponder()
         nightDatePicker.resignFirstResponder()
-        
     }
     
     // MARK: - Helper Functions
+    /**
+     Helper function to disable corresponding views when disableAll switch is toggled.
+     -  Parameters: None
+     - Returns: Void
+     */
     func disableAll(){
         // switches
         intervalSwitch.setOn(false, animated: true)
@@ -236,6 +296,11 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         eveningDatePicker.isEnabled = false
         nightDatePicker.isEnabled = false
     }
+    /**
+     Helper function to enable corresponding views when disableAll switch is toggled.
+     -  Parameters: None
+     - Returns: Void
+     */
     func enableAll(){
         // switches
         intervalSwitch.setOn(true, animated: true)
@@ -254,11 +319,23 @@ class NotificationSettingsViewController: UIViewController, UITextFieldDelegate 
         eveningDatePicker.isEnabled = true
         nightDatePicker.isEnabled = true
     }
+    /**
+     Helper function to create custom alerts.
+     - Parameters:
+        - title: Title for the alert.
+        - message: Message body for the alert.
+     - Returns: Void
+     */
     func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
+    /**
+     Helper function to save the state of the UI using user defaults.
+     - Parameters: None
+     - Returns: Void
+     */
     func saveUI(){
         // switch states
         UserDefaults.standard.setValue(disableAllSwitch.isOn, forKey: "disableAll")

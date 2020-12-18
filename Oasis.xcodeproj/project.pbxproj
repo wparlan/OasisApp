@@ -113,10 +113,9 @@
 		1677372925749AED00D70F6D /* Oasis */ = {
 			isa = PBXGroup;
 			children = (
-				165386A125780B3100964188 /* Sounds */,
 				1677372A25749AED00D70F6D /* AppDelegate.swift */,
-				1677372C25749AED00D70F6D /* SceneDelegate.swift */,
 				1677373025749AED00D70F6D /* Main.storyboard */,
+				1677373B25749AF000D70F6D /* Info.plist */,
 				165386952578050200964188 /* TabBarViewController.swift */,
 				1626B1872582058D00E60BAE /* CalendarViewController.swift */,
 				1635A1BF2587F6DD008CEFCE /* ShopViewController.swift */,
@@ -124,12 +123,6 @@
 				16009B3E258889F70075486D /* OasisViewController.swift */,
 				1653ECE32586FF0B008BD530 /* SettingsViewController.swift */,
 				1653868C2577FFA500964188 /* NotificationSettingsViewController.swift */,
-				1677373625749AF000D70F6D /* Assets.xcassets */,
-				1677373825749AF000D70F6D /* LaunchScreen.storyboard */,
-				1677373B25749AF000D70F6D /* Info.plist */,
-				1677373325749AED00D70F6D /* Oasis.xcdatamodeld */,
-				1653866D2577A80500964188 /* Plant+CoreDataClass.swift */,
-				1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */,
 				1653868F257800F200964188 /* NotificationHandler.swift */,
 				1653869E257808DE00964188 /* MusicPlayer.swift */,
 				1626B18B2582097900E60BAE /* DateCell.swift */,
@@ -137,6 +130,13 @@
 				1635A1C32587FE83008CEFCE /* ShopCell.swift */,
 				16009B3B25887C310075486D /* ShopItem.swift */,
 				16009B4125888AEE0075486D /* OasisCell.swift */,
+				1677373325749AED00D70F6D /* Oasis.xcdatamodeld */,
+				1653866D2577A80500964188 /* Plant+CoreDataClass.swift */,
+				1653866E2577A80500964188 /* Plant+CoreDataProperties.swift */,
+				1677372C25749AED00D70F6D /* SceneDelegate.swift */,
+				1677373625749AF000D70F6D /* Assets.xcassets */,
+				1677373825749AF000D70F6D /* LaunchScreen.storyboard */,
+				165386A125780B3100964188 /* Sounds */,
 			);
 			path = Oasis;
 			sourceTree = "<group>";

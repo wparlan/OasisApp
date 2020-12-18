@@ -1,17 +1,25 @@
 //
 //  NotificationHandler.swift
 //  Oasis
+//  Helper Class to handle scheduling and deleting notifications for the Oasis App.
+//  CPSC 315-01 Fall 2020
+//  Final Project
+//  Source: https://www.hackingwithswift.com/books/ios-swiftui/scheduling-local-notifications
 //
-//  Created by Greeley Lindberg on 6/13/20.
+//  Created by Greeley Lindberg and William Parlan on 6/13/20.
 //  Copyright © 2020 Lindberg Parlan. All rights reserved.
 //
+
 import Foundation
 import UserNotifications
 
-class NotificationHandler {
+struct NotificationHandler {
     
     let center = UNUserNotificationCenter.current()
     
+    /**
+     Requests the user's permission to recieve notifications.
+     */
     func requestPermission() {
         // Request notification authorizations at first launch
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
@@ -24,6 +32,15 @@ class NotificationHandler {
         }
     }
     
+    /**
+     Sets a notification reminder for a specific time.
+     - parameters:
+        - identifier: The identifier of the reminder
+        - title: The title of the reminder
+        - body: The body of the reminder
+        - hour: The hour the reminder is set for
+        - minute: The minute the reminder is set for
+     */
     func setReminder(identifier: String, title: String, body: String, hour: Int, minute: Int) {
         center.removePendingNotificationRequests(withIdentifiers: [title])
         // Configure notification
@@ -43,11 +60,19 @@ class NotificationHandler {
         center.add(request) {(error) in
             // check error parameter here
             if error != nil{
-                print("Something went wrong --> \(String(describing: error))")
+                print("Error setting reminder \(String(describing: error))")
             }
             print ("Alarm Notification scheduled")
         }
     }
+    
+    /**
+     Sets an interval notification reminder.
+     - parameters:
+        - title: The title of the reminder
+        - body: The body of the reminder
+        - timeInterval: The interval detrmining how often the reminder fires
+     */
     func setReminder(title: String, body: String, timeInterval: Int) {
         center.removePendingNotificationRequests(withIdentifiers: [title])
         // Configure notification
@@ -66,11 +91,14 @@ class NotificationHandler {
             if error != nil{
                 print("Something went wrong --> \(String(describing: error))")
             }
-            print("Timed Notification at created.")
+            print("Timed Notification created.")
         }
     }
     
-    func clearNotifications() -> Void {
+    /**
+     Clears prending notifications.
+     */
+    func clearNotifications() {
         center.removeAllPendingNotificationRequests()
     }
 }

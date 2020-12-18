@@ -50,7 +50,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTs-iP-chB">
                                                                     <rect key="frame" x="68.5" y="0.0" width="113" height="25.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="LJC-Fx-Wpi">
@@ -534,7 +534,9 @@
                                             <constraint firstAttribute="height" constant="60" id="wIH-uP-twE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="water-button"/>
+                                        <state key="normal" image="water-button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="waterButtonPressed:" destination="icU-Hl-9Yn" eventType="touchUpInside" id="Zm3-6W-II1"/>
                                         </connections>
@@ -720,7 +722,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hour(s)      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="205-CZ-ijd">
                                                                 <rect key="frame" x="52" y="0.0" width="81.5" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -738,7 +740,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minute(s)  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUg-gn-flv">
                                                                 <rect key="frame" x="52" y="0.0" width="81.5" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -923,14 +925,13 @@
                                 <rect key="frame" x="45" y="45" width="324" height="718"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="254" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-gO-kDR">
-                                        <rect key="frame" x="0.0" y="0.0" width="324" height="25"/>
-                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="25"/>
-                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOb-Or-v6B">
-                                        <rect key="frame" x="0.0" y="65" width="324" height="653"/>
-                                        <string key="text">Your body is 70% water. Naturally, you need to consume a lot of water daily to stay healthy. But how much is the right amount? As a general rule of thumb, you should consume about 8 cups of water a day. To help you stay hydrated, we recommend carrying a reusable water bottle with you during the day. Additionally, making a conscious effort to choose water over sugary drinks will help you stay healthy and hydrated. Whenever you finish a cup of water (8 oz), water your plant, too. Keep it up, and witness the growth of a virtual plant and a healthy habit!</string>
+                                        <rect key="frame" x="0.0" y="73.5" width="324" height="644.5"/>
+                                        <mutableString key="text">Your body is 70% water. Naturally, you need to consume a lot of water daily to stay healthy. But how much is the right amount? As a general rule of thumb, you should consume about 8 cups of water a day. To help you stay hydrated, we recommend carrying a reusable water bottle with you during the day. Additionally, making a conscious effort to choose water over sugary drinks will help you stay healthy and hydrated. Whenever you finish  at least a cup of water (8 oz), water your plant, too. Keep it up, and witness the growth of a virtual plant and a healthy habit! Track your progress on the calendar, and review your growing collection of plants in your oasis. </mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -954,7 +955,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9R-Ky-3uD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Rgp-XN-aiu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3397" y="95"/>
+            <point key="canvasLocation" x="-3397.1014492753625" y="94.419642857142847"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pgl-Ln-VVH">
@@ -998,6 +999,9 @@
                                                 <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="toggleMusic:" destination="Xh8-cw-RbO" eventType="touchUpInside" id="Nx0-IH-bGz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcm-FO-7Ef">
                                         <rect key="frame" x="0.0" y="100" width="180" height="30"/>
@@ -1059,9 +1063,6 @@
         <image name="x-mark" width="100" height="100"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

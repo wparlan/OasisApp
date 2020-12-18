@@ -1,8 +1,13 @@
 //
 //  SceneDelegate.swift
 //  Oasis
+//  Scene Delegate for the Oasis App.
+//  CPSC 315-01 Fall 2020
+//  Final Project
+//  Source:
 //
 //  Created by Greeley Lindberg on 11/29/20.
+//  Copyright © 2020 Lindberg Parlan. All rights reserved.
 //
 
 import UIKit
